@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyTaiLieu
 {
-    public partial class Form1 : Form
+    public partial class frmThemTaiLieu : Form
     {
-        public Form1()
+        public frmThemTaiLieu()
         {
             InitializeComponent();
         }
