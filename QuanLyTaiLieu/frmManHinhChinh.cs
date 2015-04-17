@@ -15,6 +15,11 @@ namespace QuanLyTaiLieu
         public frmManHinhChinh()
         {
             InitializeComponent();
+            listView1.Columns.Add("Tiêu đề");
+            listView1.Columns.Add("Tác giả");
+            listView1.Columns.Add("Năm");
+
+            
         }
     }
 }
