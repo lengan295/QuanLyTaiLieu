@@ -15,11 +15,25 @@ namespace QuanLyTaiLieu
         public frmManHinhChinh()
         {
             InitializeComponent();
-            listView1.Columns.Add("Tiêu đề");
-            listView1.Columns.Add("Tác giả");
-            listView1.Columns.Add("Năm");
+            listView1.Columns.Add("Tác giả",150);
+            listView1.Columns.Add("Tiêu đề",300);            
+            listView1.Columns.Add("Năm",50);
 
-            
+
+            string[] arr = new string[4];
+            ListViewItem itm;
+            //add items to ListView
+            arr[0] = "Phan Ngọc Quốc";
+            arr[1] = "Tư duy thiên tài";
+            arr[2] = "2014";
+            itm = new ListViewItem(arr);
+            listView1.Items.Add(itm);
+        }
+
+        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            frmXemThongTinTaiLieu frm = new frmXemThongTinTaiLieu();
+            frm.Show();
         }
     }
 }

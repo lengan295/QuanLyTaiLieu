@@ -21,6 +21,7 @@ C:\Users\Toan\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLi
 C:\Users\Toan\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.csproj.GenerateResource.Cache
 C:\Users\Toan\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.exe
 C:\Users\Toan\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.pdb
+<<<<<<< HEAD
 C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.exe
 C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.pdb
 C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\bin\Debug\QuanLyTaiLieu.exe
@@ -33,3 +34,8 @@ C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiL
 C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmXoaDanhMuc.resources
 C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.Properties.Resources.resources
 C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.csproj.GenerateResource.Cache
+=======
+D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmThemTaiLieu.resources
+D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmTrichDanNhieu.resources
+D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmXemThongTinTaiLieu.resources
+>>>>>>> origin/master
