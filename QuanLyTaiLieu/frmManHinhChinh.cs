@@ -36,20 +36,61 @@ namespace QuanLyTaiLieu
             btn_OpenDoc.ImageAlign = ContentAlignment.TopCenter;
             btn_OpenDoc.TextAlign = ContentAlignment.BottomCenter;
 
+            //buttons
+            btn_Delete.Enabled = false;
+            btn_citation.Enabled = false;
+            btn_Edit.Enabled = false;
+            btn_OpenDoc.Enabled = false;
+            
             list_Docs.Columns.Add("Tác giả",150);
             list_Docs.Columns.Add("Tiêu đề",300);            
             list_Docs.Columns.Add("Năm",50);
 
+            list_Docs.FullRowSelect = true;
             //button1.Enabled = false;
 
             string[] arr = new string[4];
             ListViewItem itm;
             //add items to ListView
+            arr[0] = "Wayne F. Robinson";
+            arr[1] = "Clinicopathologic Principles For Veterinary Medicine";
+            arr[2] = "1988";
+            itm = new ListViewItem(arr);
+            list_Docs.Items.Add(itm);
+
+            arr[0] = "Nguyễn Văn Triều Dâng";
+            arr[1] = "Ứng dụng web ngữ vào phân tích trực tuyến";
+            arr[2] = "2006";
+            itm = new ListViewItem(arr);
+            list_Docs.Items.Add(itm);
+
+            arr[0] = "Martin Abadi";
+            arr[1] = "Explicit Communication Revisited: Two New Attacks on Authentication Protocols";
+            arr[2] = "1997";
+            itm = new ListViewItem(arr);
+            list_Docs.Items.Add(itm);
+
             arr[0] = "Phan Ngọc Quốc";
             arr[1] = "Tư duy thiên tài";
             arr[2] = "2014";
             itm = new ListViewItem(arr);
             list_Docs.Items.Add(itm);
+
+            //tom tat
+            //rich_Sumary.Text = "SSH and AKA are recent, practical protocols for secure connections over an otherwise unprotected network. This paper shows that, despite the use of public-key cryptography, SSH and AKA do not provide authentication as intended. The flaws of SSH and AKA can be viewed as the result of their disregarding a basic principle for the design of sound authentication protocols: the principle that messages should be explicit. 1 Introduction SSH and AKA are two recent, practical protocols for secure connections over an otherwise unprotected network";
+
+            //add items to treeView
+            TreeNode[] subNodes = new TreeNode[3];
+            subNodes[0] = new TreeNode("Danh mục 1 (4)");
+            subNodes[1] = new TreeNode("Danh mục 2 (2)");
+            subNodes[2] = new TreeNode("Danh mục 3 (0)");
+            TreeNode node = new TreeNode("Chủ đề 1", subNodes);
+            tree_catalogue.Nodes.Add(node);
+
+            node = new TreeNode("Danh mục 4 (0)");
+            tree_catalogue.Nodes.Add(node);
+
+            tree_catalogue.ExpandAll();
         }
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
