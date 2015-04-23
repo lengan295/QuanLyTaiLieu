@@ -146,9 +146,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\citation.ico" />
+    <None Include="Resources\add_cata.ico" />
     <Content Include="Resources\citation.JPG" />
     <None Include="Resources\Open1.ico" />
     <None Include="Resources\citation1.JPG" />
+    <None Include="Resources\delete_cat.ico" />
     <Content Include="Resources\Open.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

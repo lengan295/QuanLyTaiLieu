@@ -73,6 +73,16 @@ namespace QuanLyTaiLieu.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_cata {
+            get {
+                object obj = ResourceManager.GetObject("add_cata", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap citation {
             get {
                 object obj = ResourceManager.GetObject("citation", resourceCulture);
@@ -96,6 +106,16 @@ namespace QuanLyTaiLieu.Properties {
         internal static System.Drawing.Bitmap delete {
             get {
                 object obj = ResourceManager.GetObject("delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap delete_cat {
+            get {
+                object obj = ResourceManager.GetObject("delete_cat", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

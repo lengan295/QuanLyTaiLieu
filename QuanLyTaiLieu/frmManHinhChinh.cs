@@ -16,29 +16,29 @@ namespace QuanLyTaiLieu
         {
             InitializeComponent();
 
-            button1.Image = global::QuanLyTaiLieu.Properties.Resources.add;
-            button1.ImageAlign = ContentAlignment.TopCenter;
-            button1.TextAlign = ContentAlignment.BottomCenter;
+            btn_Add.Image = global::QuanLyTaiLieu.Properties.Resources.add;
+            btn_Add.ImageAlign = ContentAlignment.TopCenter;
+            btn_Add.TextAlign = ContentAlignment.BottomCenter;
 
-            button2.Image = global::QuanLyTaiLieu.Properties.Resources.delete;
-            button2.ImageAlign = ContentAlignment.TopCenter;
-            button2.TextAlign = ContentAlignment.BottomCenter;
+            btn_Delete.Image = global::QuanLyTaiLieu.Properties.Resources.delete;
+            btn_Delete.ImageAlign = ContentAlignment.TopCenter;
+            btn_Delete.TextAlign = ContentAlignment.BottomCenter;
 
-            button3.Image = global::QuanLyTaiLieu.Properties.Resources.edi;
-            button3.ImageAlign = ContentAlignment.TopCenter;
-            button3.TextAlign = ContentAlignment.BottomCenter;
+            btn_Edit.Image = global::QuanLyTaiLieu.Properties.Resources.edi;
+            btn_Edit.ImageAlign = ContentAlignment.TopCenter;
+            btn_Edit.TextAlign = ContentAlignment.BottomCenter;
 
-            button4.Image = global::QuanLyTaiLieu.Properties.Resources.citation1;
-            button4.ImageAlign = ContentAlignment.TopCenter;
-            button4.TextAlign = ContentAlignment.BottomCenter;
+            btn_citation.Image = global::QuanLyTaiLieu.Properties.Resources.citation1;
+            btn_citation.ImageAlign = ContentAlignment.TopCenter;
+            btn_citation.TextAlign = ContentAlignment.BottomCenter;
 
-            button5.Image = global::QuanLyTaiLieu.Properties.Resources.Open;
-            button5.ImageAlign = ContentAlignment.TopCenter;
-            button5.TextAlign = ContentAlignment.BottomCenter;
+            btn_OpenDoc.Image = global::QuanLyTaiLieu.Properties.Resources.Open;
+            btn_OpenDoc.ImageAlign = ContentAlignment.TopCenter;
+            btn_OpenDoc.TextAlign = ContentAlignment.BottomCenter;
 
-            listView1.Columns.Add("Tác giả",150);
-            listView1.Columns.Add("Tiêu đề",300);            
-            listView1.Columns.Add("Năm",50);
+            list_Docs.Columns.Add("Tác giả",150);
+            list_Docs.Columns.Add("Tiêu đề",300);            
+            list_Docs.Columns.Add("Năm",50);
 
             //button1.Enabled = false;
 
@@ -49,13 +49,36 @@ namespace QuanLyTaiLieu
             arr[1] = "Tư duy thiên tài";
             arr[2] = "2014";
             itm = new ListViewItem(arr);
-            listView1.Items.Add(itm);
+            list_Docs.Items.Add(itm);
         }
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             frmXemThongTinTaiLieu frm = new frmXemThongTinTaiLieu();
             frm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmThemTaiLieu frm = new frmThemTaiLieu();
+            frm.ShowDialog();
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Bạn có muốn xóa (những) tài liệu này không?","Xác nhận", MessageBoxButtons.YesNo);
+        }
+
+        private void btn_Edit_Click(object sender, EventArgs e)
+        {
+            frmCapNhat frm = new frmCapNhat();
+            frm.ShowDialog();
+        }
+
+        private void btn_citation_Click(object sender, EventArgs e)
+        {
+            frmTrichDanNhieu frm = new frmTrichDanNhieu();
+            frm.ShowDialog();
         }
     }
 }
