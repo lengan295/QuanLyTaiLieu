@@ -21,3 +21,6 @@ C:\Users\Toan\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLi
 C:\Users\Toan\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.csproj.GenerateResource.Cache
 C:\Users\Toan\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.exe
 C:\Users\Toan\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.pdb
+D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmThemTaiLieu.resources
+D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmTrichDanNhieu.resources
+D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmXemThongTinTaiLieu.resources
