@@ -21,6 +21,8 @@ namespace QuanLyTaiLieu
         {
             if (txt_Ghichu.Text.Length >= 1000)
                 MessageBox.Show("Textbox Note ghi chú có giá trị maxlengt là [1000] xin hãy input lại");
+            else
+                MessageBox.Show("Đã lưu vào database");
         }
 
         private void btn_Mo_Click(object sender, EventArgs e)
@@ -31,6 +33,7 @@ namespace QuanLyTaiLieu
         private void btn_Trichdan_Click(object sender, EventArgs e)
         {
             frmTrichDanNhieu frm = new frmTrichDanNhieu();
+            frm.Show();
         }
 
         private void btn_Xoa_Click(object sender, EventArgs e)
@@ -43,7 +46,7 @@ namespace QuanLyTaiLieu
             result = MessageBox.Show(message, caption, buttons);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                DialogResult result2 = MessageBox.Show("Đã xóa!", "Thông báo xác nhận", MessageBoxButtons.YesNo);
+                DialogResult result2 = MessageBox.Show("Đã xóa!", "Thông báo xác nhận", MessageBoxButtons.OK);
             }
         }
     }

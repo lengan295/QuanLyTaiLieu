@@ -19,7 +19,18 @@ namespace QuanLyTaiLieu
             listView1.Columns.Add("Tác giả");
             listView1.Columns.Add("Năm");
 
-            
+            ListViewItem tdtt = new ListViewItem("Tư Duy Thiên Tài");
+            ListViewItem.ListViewSubItem tg = new ListViewItem.ListViewSubItem(tdtt, "Phan Ngọc Quốc");
+            ListViewItem.ListViewSubItem na = new ListViewItem.ListViewSubItem(tdtt, "2014");
+            tdtt.SubItems.Add(tg);
+            tdtt.SubItems.Add(na);
+            listView1.Items.Add(tdtt);
+        }
+
+        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            frmXemThongTinTaiLieu frm = new frmXemThongTinTaiLieu();
+            frm.Show();
         }
     }
 }
