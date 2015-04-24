@@ -87,6 +87,7 @@
             this.txt_Xemthongtin.Size = new System.Drawing.Size(250, 239);
             this.txt_Xemthongtin.TabIndex = 1;
             this.txt_Xemthongtin.Text = "";
+            this.txt_Xemthongtin.TextChanged += new System.EventHandler(this.txt_Xemthongtin_TextChanged);
             // 
             // txt_Xemtruoc
             // 
@@ -95,6 +96,7 @@
             this.txt_Xemtruoc.Size = new System.Drawing.Size(445, 455);
             this.txt_Xemtruoc.TabIndex = 2;
             this.txt_Xemtruoc.Text = "";
+            this.txt_Xemtruoc.TextChanged += new System.EventHandler(this.txt_Xemtruoc_TextChanged);
             // 
             // txt_Ghichu
             // 
