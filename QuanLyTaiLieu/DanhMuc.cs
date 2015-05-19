@@ -7,26 +7,22 @@ namespace QuanLyTaiLieu
 {
     public class DanhMuc
     {
+        public DanhMuc(int MaDM, string TenDM)
+        {
+            // TODO: Complete member initialization
+            this.MaDM = MaDM;
+            this.TenDanhMuc = TenDM;
+        }
         public int MaDM
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
 
-        public int TenDanhMuc
+        public string TenDanhMuc
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public int DSTaiLieu

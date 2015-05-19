@@ -30,16 +30,14 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.vScrollBar2 = new System.Windows.Forms.VScrollBar();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -59,22 +57,6 @@
             this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Tên tài liệu";
-            // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(40, 61);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(419, 119);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // listView2
-            // 
-            this.listView2.Location = new System.Drawing.Point(40, 214);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(528, 180);
-            this.listView2.TabIndex = 4;
-            this.listView2.UseCompatibleStateImageBehavior = false;
             // 
             // button1
             // 
@@ -129,35 +111,35 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Trích dẫn";
             // 
-            // vScrollBar1
+            // richTextBox1
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(442, 63);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 117);
-            this.vScrollBar1.TabIndex = 11;
+            this.richTextBox1.Location = new System.Drawing.Point(42, 63);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(430, 113);
+            this.richTextBox1.TabIndex = 11;
+            this.richTextBox1.Text = "";
             // 
-            // vScrollBar2
+            // richTextBox2
             // 
-            this.vScrollBar2.Location = new System.Drawing.Point(550, 214);
-            this.vScrollBar2.Name = "vScrollBar2";
-            this.vScrollBar2.Size = new System.Drawing.Size(17, 180);
-            this.vScrollBar2.TabIndex = 12;
+            this.richTextBox2.Location = new System.Drawing.Point(42, 222);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(511, 172);
+            this.richTextBox2.TabIndex = 11;
+            this.richTextBox2.Text = "";
             // 
             // frmTrichDanNhieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(582, 446);
-            this.Controls.Add(this.vScrollBar2);
-            this.Controls.Add(this.vScrollBar1);
+            this.Controls.Add(this.richTextBox2);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.listView2);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmTrichDanNhieu";
@@ -171,15 +153,13 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
-        private System.Windows.Forms.VScrollBar vScrollBar2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox2;
     }
 }
