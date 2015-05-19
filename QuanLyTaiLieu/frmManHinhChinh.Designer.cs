@@ -44,12 +44,12 @@
             this.txt_Search = new System.Windows.Forms.TextBox();
             this.cb_SearchType = new System.Windows.Forms.ComboBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -109,7 +109,6 @@
             this.list_Docs.TabIndex = 2;
             this.list_Docs.UseCompatibleStateImageBehavior = false;
             this.list_Docs.View = System.Windows.Forms.View.Details;
-            this.list_Docs.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             // 
             // rich_Sumary
             // 
@@ -200,6 +199,12 @@
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(149, 17);
+            this.toolStripStatusLabel1.Text = "Không thể kết nối tới CSDL";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -250,12 +255,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(157, 29);
             this.panel1.TabIndex = 11;
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(149, 17);
-            this.toolStripStatusLabel1.Text = "Không thể kết nối tới CSDL";
             // 
             // frmManHinhChinh
             // 

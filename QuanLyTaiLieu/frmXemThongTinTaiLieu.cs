@@ -12,9 +12,18 @@ namespace QuanLyTaiLieu
 {
     public partial class frmXemThongTinTaiLieu : Form
     {
+        private TaiLieu tl;
+
         public frmXemThongTinTaiLieu()
         {
             InitializeComponent();
+        }
+
+        public frmXemThongTinTaiLieu(TaiLieu tl)
+        {
+            // TODO: Complete member initialization
+            InitializeComponent();
+            this.tl = tl;
         }
 
         private void btn_Luu_Click(object sender, EventArgs e)
