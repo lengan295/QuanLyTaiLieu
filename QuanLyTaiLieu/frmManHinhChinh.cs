@@ -13,6 +13,8 @@ namespace QuanLyTaiLieu
     public partial class frmManHinhChinh : Form
     {
         private DBController dbcon = new DBController();
+        List<DanhMuc> listDM;
+        List<TaiLieu> listTL;
 
         public frmManHinhChinh()
         {
@@ -25,15 +27,12 @@ namespace QuanLyTaiLieu
                 toolStripStatusLabel1.Text = dbcon.error;
             else
             {
-                toolStripStatusLabel1.Text = "Kết nối CSDL thành công";
 
-                List<DanhMuc> listDM = dbcon.getAllCatalogues();
+                listDM = dbcon.getAllDanhMuc();
+                listTL = dbcon.getAllTaiLieu();
 
-                foreach (DanhMuc dm in listDM)
-                {
-                    TreeNode node = new TreeNode(dm.TenDanhMuc);
-                    tree_catalogue.Nodes.Add(node);
-                }
+                UpdateCatalogueTree();
+                UpdateListTaiLieu();
             }
 
             #region Lam tum bay
@@ -45,11 +44,9 @@ namespace QuanLyTaiLieu
             btn_citation.Enabled = false;
             btn_Edit.Enabled = false;
             btn_OpenDoc.Enabled = false;
-            */
             
-            list_Docs.Columns.Add("Tác giả",150);
-            list_Docs.Columns.Add("Tiêu đề",300);            
-            list_Docs.Columns.Add("Năm",50);
+            
+           
 
             
             //button1.Enabled = false;
@@ -99,9 +96,39 @@ namespace QuanLyTaiLieu
             #endregion
 
             tree_catalogue.ExpandAll();
-            list_Docs.FullRowSelect = true;
-            
-            
+            list_Docs.FullRowSelect = true;       
+        }
+
+        private void UpdateListTaiLieu()
+        {
+            list_Docs.Columns.Add("Tác giả", 150);
+            list_Docs.Columns.Add("Tiêu đề", 300);
+            list_Docs.Columns.Add("Năm", 50);
+
+            string[] arr = new string[4];
+            ListViewItem itm;
+
+            //add items to ListView
+            foreach(TaiLieu tl in listTL)
+            {
+                arr[0] = tl.TacGia;
+                arr[1] = tl.TieuDe;
+                arr[2] = tl.Nam.ToString();
+                itm = new ListViewItem(arr);
+                list_Docs.Items.Add(itm);
+            }
+            //toolStripStatusLabel1.Text = dbcon.error;
+        }
+
+        private void UpdateCatalogueTree()
+        {
+            foreach (DanhMuc dm in listDM)
+            {
+                TreeNode node = new TreeNode(dm.TenDanhMuc);
+                
+                tree_catalogue.Nodes.Add(node);
+                //tree_catalogue.
+            }
         }
 
         private void InitializeButtons()
