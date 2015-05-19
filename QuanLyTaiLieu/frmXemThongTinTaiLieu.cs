@@ -27,7 +27,7 @@ namespace QuanLyTaiLieu
 
         private void btn_Mo_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btn_Trichdan_Click(object sender, EventArgs e)
@@ -48,6 +48,18 @@ namespace QuanLyTaiLieu
             {
                 DialogResult result2 = MessageBox.Show("Đã xóa!", "Thông báo xác nhận", MessageBoxButtons.OK);
             }
+        }
+
+        private void txt_Xemtruoc_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_Xemtruoc.Text.Length >= 5000)
+                MessageBox.Show("Textbox Xem Trước có giá trị maxlengt là [5000] xin hãy cập nhật lại");
+        }
+
+        private void txt_Xemthongtin_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_Xemthongtin.Text.Length >= 200)
+                MessageBox.Show("Textbox \"Thông Tin Tài Liệu\" có giá trị maxlengt là [200] xin hãy cập nhật lại dữ liệu");
         }
     }
 }
