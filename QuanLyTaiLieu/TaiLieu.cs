@@ -7,15 +7,26 @@ namespace QuanLyTaiLieu
 {
     public class TaiLieu
     {
-        public int MaTL { get; set; }
-        public string LoaiTaiLieu { get; set; }
-        public string TacGia { get; set; }
-        public string TieuDe { get; set; }
-        public int Nam { get; set; }
-        public string TomTat { get; set; }
-        public string GhiChu { get; set; }
-        public string File { get; set; }
-        public string URL { get; set; }
-        public string DOI { get; set; }
+        public int MaTL
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public int LoaiTaiLieu
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
     }
 }
