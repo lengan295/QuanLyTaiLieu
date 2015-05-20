@@ -20,3 +20,7 @@ C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLi
 C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmXoaDanhMuc.resources
 C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.Properties.Resources.resources
 C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.csproj.GenerateResource.Cache
+C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\bin\Debug\QuanLyTaiLieu.exe
+C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\bin\Debug\QuanLyTaiLieu.pdb
+C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.exe
+C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.pdb
