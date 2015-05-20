@@ -431,7 +431,11 @@ namespace QuanLyTaiLieu
 
         public void deleteTaiLieu(TaiLieu tl)
         {
-            myCommand.CommandText = "Delete from TaiLieu where MaTL='@MaTL'";
+            myCommand.CommandText = "Delete from TaiLieu where MaTL='@MaTL';"
+                                    + "Delete from BaiBao where MaTL='@MaTL';"
+                                    + "Delete from Sach where MaTL='@MaTL';"
+                                    + "Delete from TrangWeb where MaTL='@MaTL';"
+                                    + "Delete from Proceeding where MaTL='@MaTL';";
             myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
 
             myCommand.ExecuteNonQuery();
