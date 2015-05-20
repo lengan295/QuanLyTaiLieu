@@ -24,13 +24,6 @@ namespace QuanLyTaiLieu
         {
             // TODO: Complete member initialization
             InitializeComponent();
-            
-        }
-
-        public frmXemThongTinTaiLieu(TaiLieu tl)
-        {
-            // TODO: Complete member initialization
-            InitializeComponent();
             this.tl = tl;
             txt_Xemthongtin.ReadOnly = true;
             txt_Xemthongtin.Enabled = true;
