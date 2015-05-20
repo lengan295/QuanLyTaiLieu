@@ -13,10 +13,43 @@ namespace QuanLyTaiLieu
     public partial class frmXemThongTinTaiLieu : Form
     {
         private TaiLieu tl;
+        private DBController dbcon = new DBController();
 
         public frmXemThongTinTaiLieu()
         {
             InitializeComponent();
+            String loaitailieu = tl.LoaiTaiLieu;
+            String thongtin = "Tac gia: " + tl.TacGia + "\nTieu de: " + tl.TieuDe + "\nNam" + tl.Nam;
+            switch (loaitailieu)
+            {
+                case "article":
+                    {
+                        BaiBao bb = dbcon.getBaiBao(tl);
+                        thongtin = thongtin + "\nLoai tai lieu: Bai bao \nTap chi: " + bb.TapChi + "Trang: " + bb.Trang + "\nVolume: " + bb.Volume + "\nIssue: " + bb.Issue;
+                    }
+                    break;
+                case "book":
+                    {
+                        Sach bb = dbcon.getSach(tl);
+                        thongtin = thongtin + "\nLoai tai lieu: Sach \nNha xuat ban: " + bb.NhaXB + "\nTai ban: " + bb.TaiBan + "\nThanh pho: " + bb.ThanhPho;
+                    }
+                    break;
+                case "inproceedings":
+                    {
+                        Proceedings bb = dbcon.getProceeding(tl);
+                        thongtin = thongtin + "\nLoai tai lieu: Proceeding \nHoi nghi: " + bb.TenHoiNghi + "\nThanh pho: " + bb.ThanhPho;
+                    }
+                    break;
+                case "misc":
+                    {
+                        TrangWeb bb = dbcon.getTrangWeb(tl);
+                        thongtin = thongtin + "\nLoai tai lieu: Web \nTo chuc: " + bb.ToChuc + "\nNgay: " + bb.Ngay+"\\"+bb.Thang+"\nNgay truy cap: "+bb.NgayTruyCap;
+                    }
+                    break;
+            }
+            txt_Xemthongtin.Text = thongtin;
+            txt_Ghichu.Text = tl.GhiChu;
+            txt_Xemtruoc.Text = tl.TomTat;
         }
 
         public frmXemThongTinTaiLieu(TaiLieu tl)
@@ -36,7 +69,7 @@ namespace QuanLyTaiLieu
 
         private void btn_Mo_Click(object sender, EventArgs e)
         {
-            
+           
         }
 
         private void btn_Trichdan_Click(object sender, EventArgs e)
