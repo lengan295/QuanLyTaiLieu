@@ -278,7 +278,7 @@ namespace QuanLyTaiLieu
         public void addTaiLieu(TaiLieu tl)
         {
             myCommand.CommandText = "Insert into TaiLieu(LoaiTaiLieu, TacGia, TieuDe, Nam, TomTat, [File], URL, DOI)"+
-                                    "values('@LoaiTaiLieu', '@TacGia', '@TieuDe', '@Nam', '@TomTat', '@File', '@URL', '@DOI')";
+                                    "values('@LoaiTaiLieu', '@TacGia', '@TieuDe', '@Nam', '@TomTat', '@File', '@URL', '@DOI');SELECT CAST(scope_identity() AS int);";
             myCommand.Parameters.Add(new SqlParameter("LoaiTaiLieu",tl.LoaiTaiLieu));
             myCommand.Parameters.Add(new SqlParameter("TacGia", tl.TacGia));
             myCommand.Parameters.Add(new SqlParameter("TieuDe", tl.TieuDe));
@@ -287,6 +287,61 @@ namespace QuanLyTaiLieu
             myCommand.Parameters.Add(new SqlParameter("File", tl.File));
             myCommand.Parameters.Add(new SqlParameter("URL", tl.URL));
             myCommand.Parameters.Add(new SqlParameter("DOI", tl.DOI));
+
+            tl.MaTL = (int) myCommand.ExecuteScalar();
+
+
+        }
+
+        public void addBaiBao(BaiBao bb)
+        {
+            addTaiLieu(bb);
+            myCommand.CommandText = "Insert into BaiBao(MaTL, TapChi, Trang, Volume, Issue)" +
+                                    "values('@MaTL','@TapChi', '@Trang', '@Volume', '@Issue')";
+            myCommand.Parameters.Add(new SqlParameter("MaTL", bb.MaTL));
+            myCommand.Parameters.Add(new SqlParameter("TapChi", bb.TapChi));
+            myCommand.Parameters.Add(new SqlParameter("Trang", bb.Trang));
+            myCommand.Parameters.Add(new SqlParameter("Volume", bb.Volume));
+            myCommand.Parameters.Add(new SqlParameter("Issue", bb.Issue));
+
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void addTrangWeb(TrangWeb web)
+        {
+            addTaiLieu(web);
+            myCommand.CommandText = "Insert into TrangWeb(MaTL, ToChuc, Ngay, Thang, NgayTruyCap)" +
+                                    "values('@MaTL','@ToChuc', '@Ngay', '@Thang', '@NgayTruyCap')";
+            myCommand.Parameters.Add(new SqlParameter("MaTL", web.MaTL));
+            myCommand.Parameters.Add(new SqlParameter("ToChuc", web.ToChuc));
+            myCommand.Parameters.Add(new SqlParameter("Ngay", web.Ngay));
+            myCommand.Parameters.Add(new SqlParameter("Thang", web.Thang));
+            myCommand.Parameters.Add(new SqlParameter("NgayTruyCap", web.NgayTruyCap));
+
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void addSach(Sach sh)
+        {
+            addTaiLieu(sh);
+            myCommand.CommandText = "Insert into Sach(MaTL, NhaXB, TaiBan, ThanhPho)" +
+                                    "values('@MaTL', '@NhaXB', '@TaiBan', '@ThanhPho')";
+            myCommand.Parameters.Add(new SqlParameter("MaTL", sh.MaTL));
+            myCommand.Parameters.Add(new SqlParameter("NhaXB", sh.NhaXB));
+            myCommand.Parameters.Add(new SqlParameter("TaiBan", sh.TaiBan));
+            myCommand.Parameters.Add(new SqlParameter("ThanhPho", sh.ThanhPho));
+
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void addProceeding(Proceedings pr)
+        {
+            addTaiLieu(pr);
+            myCommand.CommandText = "Insert into Sach(MaTL, TenHoiNghi, ThanhPho)" +
+                                    "values('@MaTL', '@TenHoiNghi', '@ThanhPho')";
+            myCommand.Parameters.Add(new SqlParameter("MaTL", pr.MaTL));
+            myCommand.Parameters.Add(new SqlParameter("TenHoiNghi", pr.TenHoiNghi));
+            myCommand.Parameters.Add(new SqlParameter("ThanhPho", pr.ThanhPho));
 
             myCommand.ExecuteNonQuery();
         }
@@ -303,6 +358,55 @@ namespace QuanLyTaiLieu
             myCommand.Parameters.Add(new SqlParameter("URL", tl.URL));
             myCommand.Parameters.Add(new SqlParameter("DOI", tl.DOI));
             myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
+
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void UpdateBaiBao(BaiBao bb)
+        {
+            updateTaiLieu(bb);
+            myCommand.CommandText = "Update BaiBao set TapChi='@TapChi', Trang='@Trang', Volume='@Volume', Issue='@Issue' where MaTL='@MaTL'";
+            myCommand.Parameters.Add(new SqlParameter("TapChi", bb.TapChi));
+            myCommand.Parameters.Add(new SqlParameter("Trang", bb.Trang));
+            myCommand.Parameters.Add(new SqlParameter("Volume", bb.Volume));
+            myCommand.Parameters.Add(new SqlParameter("Issue", bb.Issue));
+            myCommand.Parameters.Add(new SqlParameter("MaTL", bb.MaTL));
+
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void UpdateSach(Sach sh)
+        {
+            updateTaiLieu(sh);
+            myCommand.CommandText = "Update Sach set NhaXB='@NhaXB', TaiBan='@TaiBan', ThanhPho='@ThanhPho' where MaTL='@MaTL'";
+            myCommand.Parameters.Add(new SqlParameter("NhaXB", sh.NhaXB));
+            myCommand.Parameters.Add(new SqlParameter("TaiBan", sh.TaiBan));
+            myCommand.Parameters.Add(new SqlParameter("ThanhPho", sh.ThanhPho));
+            myCommand.Parameters.Add(new SqlParameter("MaTL", sh.MaTL));
+
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void UpdateTrangWeb(TrangWeb web)
+        {
+            updateTaiLieu(web);
+            myCommand.CommandText = "Update Sach set ToChuc='@ToChuc', Ngay='@Ngay', Thang='@Thang', NgayTruyCap='@NgayTruyCap' where MaTL='@MaTL'";
+            myCommand.Parameters.Add(new SqlParameter("MaTL", web.MaTL));
+            myCommand.Parameters.Add(new SqlParameter("ToChuc", web.ToChuc));
+            myCommand.Parameters.Add(new SqlParameter("Ngay", web.Ngay));
+            myCommand.Parameters.Add(new SqlParameter("Thang", web.Thang));
+            myCommand.Parameters.Add(new SqlParameter("NgayTruyCap", web.NgayTruyCap));
+
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void UpdateProceeding(Proceedings pr)
+        {
+            updateTaiLieu(pr);
+            myCommand.CommandText = "Update Sach set TenHoiNghi='@TenHoiNghi', ThanhPho='@ThanhPho' where MaTL='@MaTL'";
+            myCommand.Parameters.Add(new SqlParameter("MaTL", pr.MaTL));
+            myCommand.Parameters.Add(new SqlParameter("TenHoiNghi", pr.TenHoiNghi));
+            myCommand.Parameters.Add(new SqlParameter("ThanhPho", pr.ThanhPho));
 
             myCommand.ExecuteNonQuery();
         }
