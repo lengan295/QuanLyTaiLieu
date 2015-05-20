@@ -125,75 +125,115 @@ namespace QuanLyTaiLieu
 
         public BaiBao getBaiBao(TaiLieu tl)
         {
-            if(tl.LoaiTaiLieu==
-            BaiBao tmp = new BaiBao(tl);
-            myCommand.CommandText = "Select * from BaiBao where MaTL ='" + tl.MaTL + "')";
-            try
+            if (tl.LoaiTaiLieu == "article")
             {
-                SqlDataReader myReader = null;
-
-                myReader = myCommand.ExecuteReader();
-                if (myReader.Read())
+                BaiBao tmp = new BaiBao(tl);
+                myCommand.CommandText = "Select * from BaiBao where MaTL ='" + tl.MaTL + "')";
+                try
                 {
-                    tmp.TapChi = myReader["TapChi"].ToString();
-                    tmp.Trang = myReader["Trang"].ToString();
-                    tmp.Volume = int.Parse(myReader["Volume"].ToString());
-                    tmp.Issue = int.Parse(myReader["Issue"].ToString());
+                    SqlDataReader myReader = null;
+
+                    myReader = myCommand.ExecuteReader();
+                    if (myReader.Read())
+                    {
+                        tmp.TapChi = myReader["TapChi"].ToString();
+                        tmp.Trang = myReader["Trang"].ToString();
+                        tmp.Volume = int.Parse(myReader["Volume"].ToString());
+                        tmp.Issue = int.Parse(myReader["Issue"].ToString());
+                    }
+                    myReader.Close();
                 }
-                myReader.Close();
+                catch (Exception e)
+                {
+                    this.error = e.ToString();
+                }
+                return tmp;
             }
-            catch (Exception e)
-            {
-                this.error = e.ToString();
-            }
-            return tmp;
+            return null;
         }
 
         public Sach getSach(TaiLieu tl)
         {
-            Sach tmp = new Sach(tl);
-            myCommand.CommandText = "Select * from Sach where MaTL ='" + tl.MaTL + "')";
-            try
+            if (tl.LoaiTaiLieu == "book")
             {
-                SqlDataReader myReader = null;
-
-                myReader = myCommand.ExecuteReader();
-                if (myReader.Read())
+                Sach tmp = new Sach(tl);
+                myCommand.CommandText = "Select * from Sach where MaTL ='" + tl.MaTL + "')";
+                try
                 {
-                    tmp.NhaXB = myReader["NhaXB"].ToString();
-                    tmp.TaiBan = myReader["TaiBan"].ToString();
-                    tmp.ThanhPho = myReader["ThanhPho"].ToString();
+                    SqlDataReader myReader = null;
+
+                    myReader = myCommand.ExecuteReader();
+                    if (myReader.Read())
+                    {
+                        tmp.NhaXB = myReader["NhaXB"].ToString();
+                        tmp.TaiBan = myReader["TaiBan"].ToString();
+                        tmp.ThanhPho = myReader["ThanhPho"].ToString();
+                    }
+                    myReader.Close();
                 }
-                myReader.Close();
+                catch (Exception e)
+                {
+                    this.error = e.ToString();
+                }
+                return tmp;
             }
-            catch (Exception e)
-            {
-                this.error = e.ToString();
-            }
-            return tmp;
+            return null;
         }
 
         public Proceedings getProceeding(TaiLieu tl)
         {
-            Proceedings tmp = new Proceedings(tl);
-            myCommand.CommandText = "Select * from Proceeding where MaTL ='" + tl.MaTL + "')";
-            try
+            if (tl.LoaiTaiLieu == "inproceedings")
             {
-                SqlDataReader myReader = null;
-
-                myReader = myCommand.ExecuteReader();
-                if (myReader.Read())
+                Proceedings tmp = new Proceedings(tl);
+                myCommand.CommandText = "Select * from Proceeding where MaTL ='" + tl.MaTL + "')";
+                try
                 {
-                    tmp.TenHoiNghi = myReader["TenHoiNghi"].ToString();
-                    tmp.ThanhPho = myReader["ThanhPho"].ToString();
+                    SqlDataReader myReader = null;
+
+                    myReader = myCommand.ExecuteReader();
+                    if (myReader.Read())
+                    {
+                        tmp.TenHoiNghi = myReader["TenHoiNghi"].ToString();
+                        tmp.ThanhPho = myReader["ThanhPho"].ToString();
+                    }
+                    myReader.Close();
                 }
-                myReader.Close();
+                catch (Exception e)
+                {
+                    this.error = e.ToString();
+                }
+                return tmp;
             }
-            catch (Exception e)
+            return null;
+        }
+
+        public TrangWeb getTrangWeb(TaiLieu tl)
+        {
+            if (tl.LoaiTaiLieu == "misc")
             {
-                this.error = e.ToString();
+                TrangWeb tmp = new TrangWeb(tl);
+                myCommand.CommandText = "Select * from TrangWeb where MaTL ='" + tl.MaTL + "')";
+                try
+                {
+                    SqlDataReader myReader = null;
+
+                    myReader = myCommand.ExecuteReader();
+                    if (myReader.Read())
+                    {
+                        tmp.ToChuc = myReader["ToChuc"].ToString();
+                        tmp.Ngay = int.Parse(myReader["Ngay"].ToString());
+                        tmp.Thang = int.Parse(myReader["Thang"].ToString());
+                        tmp.NgayTruyCap = DateTime.Parse(myReader["NgayTruyCap"].ToString());
+                    }
+                    myReader.Close();
+                }
+                catch (Exception e)
+                {
+                    this.error = e.ToString();
+                }
+                return tmp;
             }
-            return tmp;
+            return null;
         }
     }
 }
