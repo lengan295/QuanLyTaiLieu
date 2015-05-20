@@ -48,7 +48,9 @@ namespace QuanLyTaiLieu
                     break;
             }
             txt_Xemthongtin.Text = thongtin;
-            txt_Ghichu.Text = tl.GhiChu;
+            if(tl.GhiChu != null)
+                txt_Ghichu.Text = tl.GhiChu;
+            if (tl.TomTat!= null)
             txt_Xemtruoc.Text = tl.TomTat;
         }
 
@@ -64,12 +66,24 @@ namespace QuanLyTaiLieu
             if (txt_Ghichu.Text.Length >= 1000)
                 MessageBox.Show("Textbox Note ghi chú có giá trị maxlengt là [1000] xin hãy input lại");
             else
-                MessageBox.Show("Đã lưu vào database");
+            {
+
+            }
         }
 
         private void btn_Mo_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
+                System.Diagnostics.Process myProc = new System.Diagnostics.Process();
+                myProc.EnableRaisingEvents = false;
+                myProc.StartInfo = new System.Diagnostics.ProcessStartInfo(tl.File);
+                myProc.Start();
+            }
+            catch (Exception o)
+            {
+                MessageBox.Show(o.Message);
+            }
         }
 
         private void btn_Trichdan_Click(object sender, EventArgs e)

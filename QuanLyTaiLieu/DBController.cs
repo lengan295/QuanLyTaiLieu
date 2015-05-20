@@ -15,7 +15,7 @@ namespace QuanLyTaiLieu
 
         public DBController()
         {
-            string ConnectionString = @"Data Source=NGANPC\SQLEXPRESS;Initial Catalog=QLTL;Integrated Security=True";
+            string ConnectionString = @"Data Source=TOAN_PC\TOAN;Initial Catalog=QLTL;Integrated Security=True";
             myConnection = new SqlConnection(ConnectionString);
             try
             {
