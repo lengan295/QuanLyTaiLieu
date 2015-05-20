@@ -130,7 +130,17 @@ namespace QuanLyTaiLieu
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Bạn có muốn xóa (những) tài liệu này không?","Xác nhận", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Bạn có muốn xóa (những) tài liệu này không?", "Xác nhận", MessageBoxButtons.YesNo);
+            if (dr == System.Windows.Forms.DialogResult.Yes)
+            {
+                foreach (ListViewItem item in list_Docs.SelectedItems)
+                {
+                    TaiLieu tl = (TaiLieu)item.Tag;
+                    dbcon.deleteTaiLieu(tl);
+                    listTL.Remove(tl);
+                    UpdateListTaiLieu();
+                }
+            }
         }
 
         private void btn_Edit_Click(object sender, EventArgs e)
