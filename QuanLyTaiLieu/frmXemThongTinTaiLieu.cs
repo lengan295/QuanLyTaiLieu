@@ -17,41 +17,7 @@ namespace QuanLyTaiLieu
 
         public frmXemThongTinTaiLieu()
         {
-            InitializeComponent();
-            String loaitailieu = tl.LoaiTaiLieu;
-            String thongtin = "Tac gia: " + tl.TacGia + "\nTieu de: " + tl.TieuDe + "\nNam" + tl.Nam;
-            switch (loaitailieu)
-            {
-                case "article":
-                    {
-                        BaiBao bb = dbcon.getBaiBao(tl);
-                        thongtin = thongtin + "\nLoai tai lieu: Bai bao \nTap chi: " + bb.TapChi + "Trang: " + bb.Trang + "\nVolume: " + bb.Volume + "\nIssue: " + bb.Issue;
-                    }
-                    break;
-                case "book":
-                    {
-                        Sach bb = dbcon.getSach(tl);
-                        thongtin = thongtin + "\nLoai tai lieu: Sach \nNha xuat ban: " + bb.NhaXB + "\nTai ban: " + bb.TaiBan + "\nThanh pho: " + bb.ThanhPho;
-                    }
-                    break;
-                case "inproceedings":
-                    {
-                        Proceedings bb = dbcon.getProceeding(tl);
-                        thongtin = thongtin + "\nLoai tai lieu: Proceeding \nHoi nghi: " + bb.TenHoiNghi + "\nThanh pho: " + bb.ThanhPho;
-                    }
-                    break;
-                case "misc":
-                    {
-                        TrangWeb bb = dbcon.getTrangWeb(tl);
-                        thongtin = thongtin + "\nLoai tai lieu: Web \nTo chuc: " + bb.ToChuc + "\nNgay: " + bb.Ngay+"\\"+bb.Thang+"\nNgay truy cap: "+bb.NgayTruyCap;
-                    }
-                    break;
-            }
-            txt_Xemthongtin.Text = thongtin;
-            if(tl.GhiChu != null)
-                txt_Ghichu.Text = tl.GhiChu;
-            if (tl.TomTat!= null)
-            txt_Xemtruoc.Text = tl.TomTat;
+            InitializeComponent();    
         }
 
         public frmXemThongTinTaiLieu(TaiLieu tl)
@@ -59,6 +25,40 @@ namespace QuanLyTaiLieu
             // TODO: Complete member initialization
             InitializeComponent();
             this.tl = tl;
+            String loaitailieu = tl.LoaiTaiLieu;
+            String thongtin = "Tác giả: " + tl.TacGia + "\nTiêu đề: " + tl.TieuDe + "\nNăm: " + tl.Nam;
+            switch (loaitailieu)
+            {
+                case "article":
+                    {
+                        BaiBao bb = dbcon.getBaiBao(tl);
+                        thongtin = thongtin + "\nLoại tài liệu: Bài báo \nTạp chí: " + bb.TapChi + "Trang: " + bb.Trang + "\nVolume: " + bb.Volume + "\nIssue: " + bb.Issue;
+                    }
+                    break;
+                case "book":
+                    {
+                        Sach bb = dbcon.getSach(tl);
+                        thongtin = thongtin + "\nLoại tài liệu: Sách \nNhà xuất bản: " + bb.NhaXB + "\nTái bản: " + bb.TaiBan + "\nThành phố: " + bb.ThanhPho;
+                    }
+                    break;
+                case "inproceedings":
+                    {
+                        Proceedings bb = dbcon.getProceeding(tl);
+                        thongtin = thongtin + "\nLoại tài liệu: Proceeding \nHội nghị: " + bb.TenHoiNghi + "\nThành phố: " + bb.ThanhPho;
+                    }
+                    break;
+                case "misc":
+                    {
+                        TrangWeb bb = dbcon.getTrangWeb(tl);
+                        thongtin = thongtin + "\nLoại tài liệu: Web \nTổ chức: " + bb.ToChuc + "\nNgày: " + bb.Ngay + "\\" + bb.Thang + "\nNgày truy cập: " + bb.NgayTruyCap;
+                    }
+                    break;
+            }
+            txt_Xemthongtin.Text = thongtin;
+            if (tl.GhiChu != null)
+                txt_Ghichu.Text = tl.GhiChu;
+            if (tl.TomTat != null)
+                txt_Xemtruoc.Text = tl.TomTat;
         }
 
         private void btn_Luu_Click(object sender, EventArgs e)
