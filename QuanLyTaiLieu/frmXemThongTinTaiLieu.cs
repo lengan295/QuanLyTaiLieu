@@ -73,11 +73,16 @@ namespace QuanLyTaiLieu
 
         private void btn_Mo_Click(object sender, EventArgs e)
         {
+            String path;
+            if (tl.LoaiTaiLieu == "misc")
+                path = tl.URL;
+            else
+                path = tl.File;
             try
             {
                 System.Diagnostics.Process myProc = new System.Diagnostics.Process();
                 myProc.EnableRaisingEvents = false;
-                myProc.StartInfo = new System.Diagnostics.ProcessStartInfo(tl.File);
+                myProc.StartInfo = new System.Diagnostics.ProcessStartInfo(path);
                 myProc.Start();
             }
             catch (Exception o)
