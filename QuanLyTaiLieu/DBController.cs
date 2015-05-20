@@ -122,5 +122,78 @@ namespace QuanLyTaiLieu
 
             return list;
         }
+
+        public BaiBao getBaiBao(TaiLieu tl)
+        {
+            if(tl.LoaiTaiLieu==
+            BaiBao tmp = new BaiBao(tl);
+            myCommand.CommandText = "Select * from BaiBao where MaTL ='" + tl.MaTL + "')";
+            try
+            {
+                SqlDataReader myReader = null;
+
+                myReader = myCommand.ExecuteReader();
+                if (myReader.Read())
+                {
+                    tmp.TapChi = myReader["TapChi"].ToString();
+                    tmp.Trang = myReader["Trang"].ToString();
+                    tmp.Volume = int.Parse(myReader["Volume"].ToString());
+                    tmp.Issue = int.Parse(myReader["Issue"].ToString());
+                }
+                myReader.Close();
+            }
+            catch (Exception e)
+            {
+                this.error = e.ToString();
+            }
+            return tmp;
+        }
+
+        public Sach getSach(TaiLieu tl)
+        {
+            Sach tmp = new Sach(tl);
+            myCommand.CommandText = "Select * from Sach where MaTL ='" + tl.MaTL + "')";
+            try
+            {
+                SqlDataReader myReader = null;
+
+                myReader = myCommand.ExecuteReader();
+                if (myReader.Read())
+                {
+                    tmp.NhaXB = myReader["NhaXB"].ToString();
+                    tmp.TaiBan = myReader["TaiBan"].ToString();
+                    tmp.ThanhPho = myReader["ThanhPho"].ToString();
+                }
+                myReader.Close();
+            }
+            catch (Exception e)
+            {
+                this.error = e.ToString();
+            }
+            return tmp;
+        }
+
+        public Proceedings getProceeding(TaiLieu tl)
+        {
+            Proceedings tmp = new Proceedings(tl);
+            myCommand.CommandText = "Select * from Proceeding where MaTL ='" + tl.MaTL + "')";
+            try
+            {
+                SqlDataReader myReader = null;
+
+                myReader = myCommand.ExecuteReader();
+                if (myReader.Read())
+                {
+                    tmp.TenHoiNghi = myReader["TenHoiNghi"].ToString();
+                    tmp.ThanhPho = myReader["ThanhPho"].ToString();
+                }
+                myReader.Close();
+            }
+            catch (Exception e)
+            {
+                this.error = e.ToString();
+            }
+            return tmp;
+        }
     }
 }

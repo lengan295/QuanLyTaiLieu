@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaiBao.cs" />
     <Compile Include="DanhMuc.cs" />
     <Compile Include="DBController.cs" />
     <Compile Include="frmCapNhat.cs">
@@ -94,6 +95,7 @@
     <Compile Include="frmXoaDanhMuc.Designer.cs">
       <DependentUpon>frmXoaDanhMuc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Proceedings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QLTLDataSet.Designer.cs">
@@ -101,7 +103,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLTLDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Sach.cs" />
     <Compile Include="TaiLieu.cs" />
+    <Compile Include="TrangWeb.cs" />
     <EmbeddedResource Include="frmManHinhChinh.resx">
       <DependentUpon>frmManHinhChinh.cs</DependentUpon>
     </EmbeddedResource>
