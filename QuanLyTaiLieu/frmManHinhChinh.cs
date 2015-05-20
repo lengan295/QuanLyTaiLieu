@@ -175,6 +175,15 @@ namespace QuanLyTaiLieu
                 TreeNode node = new TreeNode(dm.TenDanhMuc);
                 node.Tag = dm;
                 tree_catalogue.Nodes.Add(node);
+                if (dm.DSDanhMucCon.Count>0)
+                {
+                    foreach (DanhMuc dmcon in dm.DSDanhMucCon)
+                    {
+                        TreeNode childnode = new TreeNode(dmcon.TenDanhMuc);
+                        childnode.Tag = dmcon;
+                        node.Nodes.Add(childnode);
+                    }
+                }
             }
         }
     }

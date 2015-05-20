@@ -25,27 +25,8 @@ namespace QuanLyTaiLieu
             set;
         }
 
-        public int DSTaiLieu
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public int DSDanhMucCon
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public DanhMuc DMCha = null;
+        public List<DanhMuc> DSDanhMucCon = new List<DanhMuc>();
 
         public void TaoDanhMuc()
         {

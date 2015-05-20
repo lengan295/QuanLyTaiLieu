@@ -51,7 +51,46 @@ namespace QuanLyTaiLieu
             {
                 this.error = e.ToString();
             }
-            
+
+            myCommand.CommandText = "SELECT * FROM CayDanhMuc";
+            try
+            {
+                SqlDataReader myReader = null;
+
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    int MaDMCha = int.Parse(myReader["MaDMCha"].ToString());
+                    int MaDMCon = int.Parse(myReader["MaDMCon"].ToString());
+                    foreach (DanhMuc dmcha in list)
+                    {
+                        if (dmcha.MaDM == MaDMCha)
+                        {
+                            foreach (DanhMuc dmcon in list)
+                            {
+                                if (dmcon.MaDM == MaDMCon)
+                                {
+                                    dmcon.DMCha = dmcha;
+                                    dmcha.DSDanhMucCon.Add(dmcon);
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+                myReader.Close();
+            }
+            catch (Exception e)
+            {
+                this.error = e.ToString();
+            }
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].DMCha != null)
+                    list.Remove(list[i]);
+            }
             return list;
         }
 
