@@ -17,6 +17,12 @@ namespace QuanLyTaiLieu
 
         public frmXemThongTinTaiLieu()
         {
+            InitializeComponent();    
+        }
+
+        public frmXemThongTinTaiLieu(TaiLieu tl)
+        {
+            // TODO: Complete member initialization
             InitializeComponent();
             
         }
@@ -35,25 +41,25 @@ namespace QuanLyTaiLieu
                 case "article":
                     {
                         BaiBao bb = dbcon.getBaiBao(tl);
-                        thongtin = thongtin + "\nLoai tai lieu: Bai bao \nTap chi: " + bb.TapChi + "Trang: " + bb.Trang + "\nVolume: " + bb.Volume + "\nIssue: " + bb.Issue;
+                        thongtin = thongtin + "\nLoại tài liệu: Bài báo \nTạp chí: " + bb.TapChi + "Trang: " + bb.Trang + "\nVolume: " + bb.Volume + "\nIssue: " + bb.Issue;
                     }
                     break;
                 case "book":
                     {
                         Sach bb = dbcon.getSach(tl);
-                        thongtin = thongtin + "\nLoai tai lieu: Sach \nNha xuat ban: " + bb.NhaXB + "\nTai ban: " + bb.TaiBan + "\nThanh pho: " + bb.ThanhPho;
+                        thongtin = thongtin + "\nLoại tài liệu: Sách \nNhà xuất bản: " + bb.NhaXB + "\nTái bản: " + bb.TaiBan + "\nThành phố: " + bb.ThanhPho;
                     }
                     break;
                 case "inproceedings":
                     {
                         Proceedings bb = dbcon.getProceeding(tl);
-                        thongtin = thongtin + "\nLoai tai lieu: Proceeding \nHoi nghi: " + bb.TenHoiNghi + "\nThanh pho: " + bb.ThanhPho;
+                        thongtin = thongtin + "\nLoại tài liệu: Proceeding \nHội nghị: " + bb.TenHoiNghi + "\nThành phố: " + bb.ThanhPho;
                     }
                     break;
                 case "misc":
                     {
                         TrangWeb bb = dbcon.getTrangWeb(tl);
-                        thongtin = thongtin + "\nLoai tai lieu: Web \nTo chuc: " + bb.ToChuc + "\nNgay: " + bb.Ngay + "\\" + bb.Thang + "\nNgay truy cap: " + bb.NgayTruyCap;
+                        thongtin = thongtin + "\nLoại tài liệu: Web \nTổ chức: " + bb.ToChuc + "\nNgày: " + bb.Ngay + "\\" + bb.Thang + "\nNgày truy cập: " + bb.NgayTruyCap;
                     }
                     break;
             }
