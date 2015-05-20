@@ -11,3 +11,12 @@ D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.Propertie
 D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.csproj.GenerateResource.Cache
 D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.exe
 D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.pdb
+C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\bin\Debug\QuanLyTaiLieu.exe.config
+C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.csprojResolveAssemblyReference.cache
+C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmManHinhChinh.resources
+C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmThemTaiLieu.resources
+C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmTrichDanNhieu.resources
+C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmXemThongTinTaiLieu.resources
+C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmXoaDanhMuc.resources
+C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.Properties.Resources.resources
+C:\Users\KUDO\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.csproj.GenerateResource.Cache
