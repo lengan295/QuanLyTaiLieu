@@ -18,8 +18,18 @@ namespace QuanLyTaiLieu
         public frmXemThongTinTaiLieu()
         {
             InitializeComponent();
+            
+        }
+
+        public frmXemThongTinTaiLieu(TaiLieu tl)
+        {
+            // TODO: Complete member initialization
+            InitializeComponent();
+            this.tl = tl;
+            txt_Xemthongtin.ReadOnly = true;
+            txt_Xemthongtin.Enabled = true;
             String loaitailieu = tl.LoaiTaiLieu;
-            String thongtin = "Tac gia: " + tl.TacGia + "\nTieu de: " + tl.TieuDe + "\nNam" + tl.Nam;
+            String thongtin = "Tác giả: " + tl.TacGia + "\nTiêu đề: " + tl.TieuDe + "\nNăm: " + tl.Nam;
             switch (loaitailieu)
             {
                 case "article":
@@ -43,22 +53,15 @@ namespace QuanLyTaiLieu
                 case "misc":
                     {
                         TrangWeb bb = dbcon.getTrangWeb(tl);
-                        thongtin = thongtin + "\nLoai tai lieu: Web \nTo chuc: " + bb.ToChuc + "\nNgay: " + bb.Ngay+"\\"+bb.Thang+"\nNgay truy cap: "+bb.NgayTruyCap;
+                        thongtin = thongtin + "\nLoai tai lieu: Web \nTo chuc: " + bb.ToChuc + "\nNgay: " + bb.Ngay + "\\" + bb.Thang + "\nNgay truy cap: " + bb.NgayTruyCap;
                     }
                     break;
             }
             txt_Xemthongtin.Text = thongtin;
-            if(tl.GhiChu != null)
+            if (tl.GhiChu != null)
                 txt_Ghichu.Text = tl.GhiChu;
-            if (tl.TomTat!= null)
-            txt_Xemtruoc.Text = tl.TomTat;
-        }
-
-        public frmXemThongTinTaiLieu(TaiLieu tl)
-        {
-            // TODO: Complete member initialization
-            InitializeComponent();
-            this.tl = tl;
+            if (tl.TomTat != null)
+                txt_Xemtruoc.Text = tl.TomTat;
         }
 
         private void btn_Luu_Click(object sender, EventArgs e)

@@ -28,6 +28,10 @@ namespace QuanLyTaiLieu
             else
             {
 
+                list_Docs.Columns.Add("Tác giả", 150);
+                list_Docs.Columns.Add("Tiêu đề", 300);
+                list_Docs.Columns.Add("Năm", 50);
+
                 listDM = dbcon.getAllDanhMuc();
                 listTL = dbcon.getAllTaiLieu();
 
@@ -148,10 +152,6 @@ namespace QuanLyTaiLieu
 
         private void UpdateListTaiLieu()
         {
-            list_Docs.Columns.Add("Tác giả", 150);
-            list_Docs.Columns.Add("Tiêu đề", 300);
-            list_Docs.Columns.Add("Năm", 50);
-
             string[] arr = new string[4];
             ListViewItem itm;
             list_Docs.Items.Clear();
