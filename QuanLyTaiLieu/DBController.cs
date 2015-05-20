@@ -472,5 +472,14 @@ namespace QuanLyTaiLieu
 
             myCommand.ExecuteNonQuery();
         }
+        public void UpdateGhichu(TaiLieu tl)
+        {
+            myCommand.CommandText = "Update TaiLieu set GhiChu=@GhiChu where MaTL=@MaTL";
+            myCommand.Parameters.Clear();
+            myCommand.Parameters.Add(new SqlParameter("GhiChu", tl.GhiChu));
+            myCommand.Parameters.Add(new SqlParameter("MaDM", tl.MaTL));
+
+            myCommand.ExecuteNonQuery();
+        }
     }
 }
