@@ -274,5 +274,71 @@ namespace QuanLyTaiLieu
             }
             return null;
         }
+
+        public void addTaiLieu(TaiLieu tl)
+        {
+            myCommand.CommandText = "Insert into TaiLieu(LoaiTaiLieu, TacGia, TieuDe, Nam, TomTat, [File], URL, DOI)"+
+                                    "values('@LoaiTaiLieu', '@TacGia', '@TieuDe', '@Nam', '@TomTat', '@File', '@URL', '@DOI')";
+            myCommand.Parameters.Add(new SqlParameter("LoaiTaiLieu",tl.LoaiTaiLieu));
+            myCommand.Parameters.Add(new SqlParameter("TacGia", tl.TacGia));
+            myCommand.Parameters.Add(new SqlParameter("TieuDe", tl.TieuDe));
+            myCommand.Parameters.Add(new SqlParameter("Nam", tl.Nam));
+            myCommand.Parameters.Add(new SqlParameter("TomTat", tl.TomTat));
+            myCommand.Parameters.Add(new SqlParameter("File", tl.File));
+            myCommand.Parameters.Add(new SqlParameter("URL", tl.URL));
+            myCommand.Parameters.Add(new SqlParameter("DOI", tl.DOI));
+
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void updateTaiLieu(TaiLieu tl)
+        {
+            myCommand.CommandText = "Update TaiLieu set LoaiTaiLieu='@LoaiTaiLieu', TacGia='@TacGia', TieuDe='@TieuDe', Nam='@Nam', TomTat='@TomTat', [File]='@File', URL='@URL', DOI='@DOI' where MaTL='@MaTL'";
+            myCommand.Parameters.Add(new SqlParameter("LoaiTaiLieu", tl.LoaiTaiLieu));
+            myCommand.Parameters.Add(new SqlParameter("TacGia", tl.TacGia));
+            myCommand.Parameters.Add(new SqlParameter("TieuDe", tl.TieuDe));
+            myCommand.Parameters.Add(new SqlParameter("Nam", tl.Nam));
+            myCommand.Parameters.Add(new SqlParameter("TomTat", tl.TomTat));
+            myCommand.Parameters.Add(new SqlParameter("File", tl.File));
+            myCommand.Parameters.Add(new SqlParameter("URL", tl.URL));
+            myCommand.Parameters.Add(new SqlParameter("DOI", tl.DOI));
+            myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
+
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void addDanhMuc(DanhMuc dm)
+        {
+            myCommand.CommandText = "Insert into DanhMuc(TenDanhMuc)" +
+                                    "values('@TenDanhMuc')";
+            myCommand.Parameters.Add(new SqlParameter("TenDanhMuc", dm.TenDanhMuc));
+
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void UdateDanhMuc(DanhMuc dm)
+        {
+            myCommand.CommandText = "Update DanhMuc set TenDanhMuc='@TenDanhMuc' where MaDM='@MaDM'";
+            myCommand.Parameters.Add(new SqlParameter("TenDanhMuc", dm.TenDanhMuc));
+            myCommand.Parameters.Add(new SqlParameter("MaDM", dm.MaDM));
+
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void deleteTaiLieu(TaiLieu tl)
+        {
+            myCommand.CommandText = "Delete from TaiLieu where MaTL='@MaTL'";
+            myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
+
+            myCommand.ExecuteNonQuery();
+        }
+
+        public void deleteDanhMuc(DanhMuc dm)
+        {
+            myCommand.CommandText = "Delete from DanhMuc where MaDm='@MaDM'";
+            myCommand.Parameters.Add(new SqlParameter("MaDM", dm.MaDM));
+
+            myCommand.ExecuteNonQuery();
+        }
     }
 }
