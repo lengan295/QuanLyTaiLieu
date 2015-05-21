@@ -103,7 +103,7 @@
             // 
             // list_Docs
             // 
-            this.list_Docs.Location = new System.Drawing.Point(175, 93);
+            this.list_Docs.Location = new System.Drawing.Point(176, 99);
             this.list_Docs.Name = "list_Docs";
             this.list_Docs.Size = new System.Drawing.Size(685, 279);
             this.list_Docs.TabIndex = 2;
