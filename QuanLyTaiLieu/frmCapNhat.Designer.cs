@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btbCancel = new System.Windows.Forms.Button();
             this.btbOk = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -76,57 +75,30 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbbLoaiTL = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // openFileDialog1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(0, -1);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(390, 548);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.btbCancel);
-            this.tabPage1.Controls.Add(this.btbOk);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.cbbLoaiTL);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(382, 522);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Thêm thủ công";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // btbCancel
             // 
-            this.btbCancel.Location = new System.Drawing.Point(304, 496);
+            this.btbCancel.Location = new System.Drawing.Point(304, 506);
             this.btbCancel.Name = "btbCancel";
             this.btbCancel.Size = new System.Drawing.Size(75, 23);
-            this.btbCancel.TabIndex = 9;
+            this.btbCancel.TabIndex = 14;
             this.btbCancel.Text = "Cancel";
             this.btbCancel.UseVisualStyleBackColor = true;
-            this.btbCancel.Click += new System.EventHandler(this.btbCancel_Click);
             // 
             // btbOk
             // 
-            this.btbOk.Location = new System.Drawing.Point(223, 496);
+            this.btbOk.Location = new System.Drawing.Point(223, 506);
             this.btbOk.Name = "btbOk";
             this.btbOk.Size = new System.Drawing.Size(75, 23);
-            this.btbOk.TabIndex = 8;
+            this.btbOk.TabIndex = 13;
             this.btbOk.Text = "Ok";
             this.btbOk.UseVisualStyleBackColor = true;
-            this.btbOk.Click += new System.EventHandler(this.btbOk_Click);
             // 
             // groupBox1
             // 
@@ -172,10 +144,10 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtTacgia);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 42);
+            this.groupBox1.Location = new System.Drawing.Point(12, 52);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(360, 448);
-            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
             // 
@@ -390,7 +362,6 @@
             this.radiobtn2.TabStop = true;
             this.radiobtn2.Text = "URL";
             this.radiobtn2.UseVisualStyleBackColor = true;
-            this.radiobtn2.CheckedChanged += new System.EventHandler(this.radiobtn1_CheckedChanged);
             // 
             // txtTep
             // 
@@ -409,7 +380,6 @@
             this.btnBrowser.TabIndex = 18;
             this.btnBrowser.Text = "Browser";
             this.btnBrowser.UseVisualStyleBackColor = true;
-            this.btnBrowser.Click += new System.EventHandler(this.btnBrowser_Click);
             // 
             // radiobtn1
             // 
@@ -421,7 +391,6 @@
             this.radiobtn1.TabStop = true;
             this.radiobtn1.Text = "Tệp";
             this.radiobtn1.UseVisualStyleBackColor = true;
-            this.radiobtn1.CheckedChanged += new System.EventHandler(this.radiobtn1_CheckedChanged);
             // 
             // txtTomtat
             // 
@@ -546,59 +515,65 @@
             "Proceedings",
             "Sách",
             "TrangWeb"});
-            this.cbbLoaiTL.Location = new System.Drawing.Point(130, 5);
+            this.cbbLoaiTL.Location = new System.Drawing.Point(130, 15);
             this.cbbLoaiTL.Name = "cbbLoaiTL";
             this.cbbLoaiTL.Size = new System.Drawing.Size(121, 21);
-            this.cbbLoaiTL.TabIndex = 6;
-            this.cbbLoaiTL.SelectedIndexChanged += new System.EventHandler(this.cbbLoaiTL_SelectedIndexChanged);
+            this.cbbLoaiTL.TabIndex = 11;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 13);
+            this.label1.Location = new System.Drawing.Point(23, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 13);
-            this.label1.TabIndex = 5;
+            this.label1.TabIndex = 10;
             this.label1.Text = "Loại tài liệu*";
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(382, 522);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Thêm tự động";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // frmThemTaiLieu
+            // frmCapNhat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(388, 544);
-            this.Controls.Add(this.tabControl1);
-            this.Name = "frmThemTaiLieu";
-            this.Text = "Thêm thủ công";
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.Controls.Add(this.btbCancel);
+            this.Controls.Add(this.btbOk);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.cbbLoaiTL);
+            this.Controls.Add(this.label1);
+            this.Name = "frmCapNhat";
+            this.Text = "Cập nhật thông tin tài liệu";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btbCancel;
         private System.Windows.Forms.Button btbOk;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txttochuc;
+        private System.Windows.Forms.TextBox txtTenhoinghi;
+        private System.Windows.Forms.Label lbtochuc;
+        private System.Windows.Forms.Label lbtenhoinghi;
+        private System.Windows.Forms.TextBox txtngaytruycap;
+        private System.Windows.Forms.TextBox txtNXB;
+        private System.Windows.Forms.Label lbthang;
+        private System.Windows.Forms.Label lbnxb;
+        private System.Windows.Forms.TextBox txtngay;
+        private System.Windows.Forms.TextBox txtIssue;
+        private System.Windows.Forms.TextBox txtthang;
+        private System.Windows.Forms.TextBox txtThanhpho;
+        private System.Windows.Forms.Label lbngaytruycap;
+        private System.Windows.Forms.Label lbissue;
+        private System.Windows.Forms.Label lbngay;
+        private System.Windows.Forms.Label lbthanhpho;
+        private System.Windows.Forms.TextBox txtTapchi;
+        private System.Windows.Forms.TextBox txtTaiban;
+        private System.Windows.Forms.Label lbtapchi;
+        private System.Windows.Forms.Label lbtaiban;
         private System.Windows.Forms.CheckedListBox checklistbox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtLink;
@@ -622,28 +597,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbbLoaiTL;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.TextBox txtTapchi;
-        private System.Windows.Forms.Label lbtapchi;
-        private System.Windows.Forms.Label lbissue;
-        private System.Windows.Forms.TextBox txtIssue;
-        private System.Windows.Forms.TextBox txtNXB;
-        private System.Windows.Forms.Label lbnxb;
-        private System.Windows.Forms.TextBox txtThanhpho;
-        private System.Windows.Forms.Label lbthanhpho;
-        private System.Windows.Forms.TextBox txtTaiban;
-        private System.Windows.Forms.Label lbtaiban;
-        private System.Windows.Forms.TextBox txtTenhoinghi;
-        private System.Windows.Forms.Label lbtenhoinghi;
-        private System.Windows.Forms.TextBox txttochuc;
-        private System.Windows.Forms.Label lbtochuc;
-        private System.Windows.Forms.TextBox txtngaytruycap;
-        private System.Windows.Forms.TextBox txtngay;
-        private System.Windows.Forms.Label lbngaytruycap;
-        private System.Windows.Forms.Label lbngay;
-        private System.Windows.Forms.TextBox txtthang;
-        private System.Windows.Forms.Label lbthang;
 
     }
 }

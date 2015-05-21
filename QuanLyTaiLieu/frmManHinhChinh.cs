@@ -43,29 +43,6 @@ namespace QuanLyTaiLieu
                 list_Docs.SelectedIndexChanged += list_Docs_SelectedIndexChanged;
             }
 
-            #region Lam tum bay
-
-            //buttons
-            /*
-            btn_Add.Enabled = false;
-            btn_Delete.Enabled = false;
-            btn_citation.Enabled = false;
-            btn_Edit.Enabled = false;
-            btn_OpenDoc.Enabled = false;
-            
-            //add items to treeView
-            /*
-            TreeNode[] subNodes = new TreeNode[3];
-            subNodes[0] = new TreeNode("Danh mục 1 (4)");
-            subNodes[1] = new TreeNode("Danh mục 2 (2)");
-            subNodes[2] = new TreeNode("Danh mục 3 (0)");
-            TreeNode node = new TreeNode("Chủ đề 1", subNodes);
-            tree_catalogue.Nodes.Add(node);
-
-            node = new TreeNode("Danh mục 4 (0)");
-            tree_catalogue.Nodes.Add(node);*/
-            #endregion
-
             tree_catalogue.ExpandAll();
             list_Docs.FullRowSelect = true;       
         }
@@ -75,9 +52,15 @@ namespace QuanLyTaiLieu
             if (list_Docs.SelectedItems.Count > 0)
             {
                 TaiLieu tl = (TaiLieu)list_Docs.SelectedItems[0].Tag;
-                rich_Sumary.Text = tl.TomTat; 
+                rich_Sumary.Text = tl.TomTat;
+                UpdateButtons(true);
+            }
+            else
+            {
+                UpdateButtons(false);
             }
         }
+
 
         private void tree_catalogue_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -114,6 +97,8 @@ namespace QuanLyTaiLieu
             btn_OpenDoc.Image = global::QuanLyTaiLieu.Properties.Resources.Open;
             btn_OpenDoc.ImageAlign = ContentAlignment.TopCenter;
             btn_OpenDoc.TextAlign = ContentAlignment.BottomCenter;
+
+            UpdateButtons(false);
         }
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -195,6 +180,14 @@ namespace QuanLyTaiLieu
                     }
                 }
             }
+        }
+
+        private void UpdateButtons(bool state)
+        {            
+            btn_Delete.Enabled = state;
+            btn_citation.Enabled = state;
+            btn_Edit.Enabled = state;
+            btn_OpenDoc.Enabled = state;
         }
     }
 }
