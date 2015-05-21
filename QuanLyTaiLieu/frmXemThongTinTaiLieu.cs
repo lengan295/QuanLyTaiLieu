@@ -69,7 +69,8 @@ namespace QuanLyTaiLieu
                 MessageBox.Show("Textbox Note ghi chú có giá trị maxlengt là [1000] xin hãy input lại");
             else
             {
-
+                tl.GhiChu = txt_Ghichu.Text.ToString();
+                dbcon.UpdateGhichu(tl);
             }
         }
 
