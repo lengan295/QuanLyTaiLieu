@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -171,12 +172,39 @@ namespace QuanLyTaiLieu
             return list;
         }
 
+        public List<DanhMuc> getDanhMucByTaiLieu(TaiLieu tl)
+        {
+            List<DanhMuc> list = new List<DanhMuc>();
+            myCommand.CommandText = "SELECT * FROM DanhMuc where MaDM in (SELECT MaDM FROM DMTL WHERE MaTL=@MaTL)";
+            myCommand.Parameters.Clear();
+            myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
+            try
+            {
+                SqlDataReader myReader = null;
+
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    int MaDM = int.Parse(myReader["MaDM"].ToString());
+                    string TenDM = myReader["TenDanhMuc"].ToString();
+                    DanhMuc dm = new DanhMuc(MaDM, TenDM);
+                    list.Add(dm);
+                }
+                myReader.Close();
+            }
+            catch (Exception e)
+            {
+                this.error = e.ToString();
+            }
+            return list;
+        }
+
         public BaiBao getBaiBao(TaiLieu tl)
         {
-            if (tl.LoaiTaiLieu == "article")
+            if (tl.LoaiTaiLieu.Trim() == "article")
             {
                 BaiBao tmp = new BaiBao(tl);
-                myCommand.CommandText = "Select * from BaiBao where MaTL=@MaTL)";
+                myCommand.CommandText = "Select * from BaiBao where MaTL=@MaTL";
                 myCommand.Parameters.Clear();
                 myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
                 try
@@ -204,10 +232,10 @@ namespace QuanLyTaiLieu
 
         public Sach getSach(TaiLieu tl)
         {
-            if (tl.LoaiTaiLieu == "book")
+            if (tl.LoaiTaiLieu.Trim() == "book")
             {
                 Sach tmp = new Sach(tl);
-                myCommand.CommandText = "Select * from Sach where MaTL=@MaTL)";
+                myCommand.CommandText = "Select * from Sach where MaTL=@MaTL";
                 myCommand.Parameters.Clear();
                 myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
                 try
@@ -234,10 +262,10 @@ namespace QuanLyTaiLieu
 
         public Proceedings getProceeding(TaiLieu tl)
         {
-            if (tl.LoaiTaiLieu == "inproceedings")
+            if (tl.LoaiTaiLieu.Trim() == "inproceedings")
             {
                 Proceedings tmp = new Proceedings(tl);
-                myCommand.CommandText = "Select * from Proceeding where MaTL=@MaTL)";
+                myCommand.CommandText = "Select * from Proceeding where MaTL=@MaTL";
                 myCommand.Parameters.Clear();
                 myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
                 try
@@ -263,10 +291,10 @@ namespace QuanLyTaiLieu
 
         public TrangWeb getTrangWeb(TaiLieu tl)
         {
-            if (tl.LoaiTaiLieu == "misc")
+            if (tl.LoaiTaiLieu.Trim() == "misc")
             {
                 TrangWeb tmp = new TrangWeb(tl);
-                myCommand.CommandText = "Select * from TrangWeb where MaTL=@MaTL)";
+                myCommand.CommandText = "Select * from TrangWeb where MaTL=@MaTL";
                 myCommand.Parameters.Clear();
                 myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
                 try
@@ -279,7 +307,8 @@ namespace QuanLyTaiLieu
                         tmp.ToChuc = myReader["ToChuc"].ToString();
                         tmp.Ngay = int.Parse(myReader["Ngay"].ToString());
                         tmp.Thang = int.Parse(myReader["Thang"].ToString());
-                        tmp.NgayTruyCap = DateTime.Parse(myReader["NgayTruyCap"].ToString());
+                        string date = myReader["NgayTruyCap"].ToString();
+                        tmp.NgayTruyCap = DateTime.Parse(date);
                     }
                     myReader.Close();
                 }

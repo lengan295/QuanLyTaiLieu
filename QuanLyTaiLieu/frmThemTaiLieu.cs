@@ -59,7 +59,7 @@ namespace QuanLyTaiLieu
                 tl.File = txtTep.Text;
                 tl.URL = txtLink.Text;
                 List<DanhMuc> listDM = new List<DanhMuc>();
-                foreach (ListBoxItem item in checklistbox.SelectedItems)
+                foreach (ListBoxItem item in checklistbox.CheckedItems)
                 {
                     listDM.Add((DanhMuc)item.Tag);
                 }
