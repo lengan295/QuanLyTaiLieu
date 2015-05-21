@@ -77,10 +77,16 @@
             this.cbbLoaiTL = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btn_Cancel_Auto = new System.Windows.Forms.Button();
+            this.btn_OK_Auto = new System.Windows.Forms.Button();
+            this.txtURL_Auto = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -564,6 +570,11 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btn_Cancel_Auto);
+            this.tabPage2.Controls.Add(this.btn_OK_Auto);
+            this.tabPage2.Controls.Add(this.txtURL_Auto);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -571,6 +582,51 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Thêm tự động";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btn_Cancel_Auto
+            // 
+            this.btn_Cancel_Auto.Location = new System.Drawing.Point(199, 154);
+            this.btn_Cancel_Auto.Name = "btn_Cancel_Auto";
+            this.btn_Cancel_Auto.Size = new System.Drawing.Size(75, 23);
+            this.btn_Cancel_Auto.TabIndex = 3;
+            this.btn_Cancel_Auto.Text = "Cancel";
+            this.btn_Cancel_Auto.UseVisualStyleBackColor = true;
+            this.btn_Cancel_Auto.Click += new System.EventHandler(this.btbCancel_Click);
+            // 
+            // btn_OK_Auto
+            // 
+            this.btn_OK_Auto.Location = new System.Drawing.Point(83, 154);
+            this.btn_OK_Auto.Name = "btn_OK_Auto";
+            this.btn_OK_Auto.Size = new System.Drawing.Size(75, 23);
+            this.btn_OK_Auto.TabIndex = 3;
+            this.btn_OK_Auto.Text = "OK";
+            this.btn_OK_Auto.UseVisualStyleBackColor = true;
+            this.btn_OK_Auto.Click += new System.EventHandler(this.btn_OK_Auto_Click);
+            // 
+            // txtURL_Auto
+            // 
+            this.txtURL_Auto.Location = new System.Drawing.Point(55, 77);
+            this.txtURL_Auto.Name = "txtURL_Auto";
+            this.txtURL_Auto.Size = new System.Drawing.Size(308, 20);
+            this.txtURL_Auto.TabIndex = 2;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(17, 80);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "URL:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(17, 23);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(193, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Thêm tự động từ kho tài liệu trực tuyến:";
             // 
             // openFileDialog1
             // 
@@ -589,6 +645,8 @@
             this.tabPage1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -645,6 +703,11 @@
         private System.Windows.Forms.Label lbngay;
         private System.Windows.Forms.TextBox txtthang;
         private System.Windows.Forms.Label lbthang;
+        private System.Windows.Forms.Button btn_Cancel_Auto;
+        private System.Windows.Forms.Button btn_OK_Auto;
+        private System.Windows.Forms.TextBox txtURL_Auto;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
 
     }
 }

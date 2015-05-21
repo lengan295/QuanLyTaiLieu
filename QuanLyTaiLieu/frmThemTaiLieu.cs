@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -282,6 +286,122 @@ namespace QuanLyTaiLieu
         private void txtTomtat_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_OK_Auto_Click(object sender, EventArgs e)
+        {
+            bool success = true;
+            string loaitailieu = "";
+            
+            if (txtURL_Auto.Text == "")
+                MessageBox.Show("Chưa nhập vào URL");
+            else
+            {
+                string recordIds = "";
+                Match match = Regex.Match(txtURL_Auto.Text, @"arnumber=([\d]+)", RegexOptions.IgnoreCase);
+                if (match.Success)
+                    recordIds = match.Groups[1].Value;
+                else
+                {
+                    MessageBox.Show("Chương trỉnh không hỗ trợ URL này.");
+                    return;
+                }
+                WebClient client = new WebClient();                
+               
+
+                string bibTex = client.DownloadString("http://ieeexplore.ieee.org/xpl/downloadCitations?recordIds="+recordIds+"&citations-format=citation-abstract&download-format=download-bibtex");
+                
+                //loai tai lieu
+                match = Regex.Match(bibTex, "@([\\w]+){", RegexOptions.IgnoreCase);
+                if (match.Success)
+                    loaitailieu = match.Groups[1].Value;
+
+                //tieu de
+                match = Regex.Match(bibTex, "title={(.*)}", RegexOptions.IgnoreCase);
+                if (match.Success)
+                    txtTieude.Text = match.Groups[1].Value;
+                else
+                {
+                    MessageBox.Show("Đã xảy ra lỗi trong quá trình trích xuất thông tin.");
+                    return;
+                }
+
+                //tac gia
+                match = Regex.Match(bibTex, "author={(.*)}", RegexOptions.IgnoreCase);
+                if (match.Success)
+                    txtTacgia.Text = match.Groups[1].Value;
+
+                //nam
+                match = Regex.Match(bibTex, "year={(.*)}", RegexOptions.IgnoreCase);
+                if (match.Success)
+                    txtNam.Text = match.Groups[1].Value;
+
+                //tom tat
+                match = Regex.Match(bibTex, "abstract={(.*)}", RegexOptions.IgnoreCase);
+                if (match.Success)
+                    txtTomtat.Text = match.Groups[1].Value;
+
+                //doi
+                match = Regex.Match(bibTex, "doi={(.*)}", RegexOptions.IgnoreCase);
+                if (match.Success)
+                    txtDOI.Text = match.Groups[1].Value;
+
+                switch (loaitailieu)
+                {
+                    case "ARTICLE":
+                        cbbLoaiTL.SelectedIndex = 0;
+
+                        //tap chi
+                        match = Regex.Match(bibTex, "journal={(.*)}", RegexOptions.IgnoreCase);
+                        if (match.Success)
+                            txtTapchi.Text = match.Groups[1].Value;
+
+                        //Volume
+                        match = Regex.Match(bibTex, "volume={(.*)}", RegexOptions.IgnoreCase);
+                        if (match.Success)
+                            txtVolume.Text = match.Groups[1].Value;
+
+                        //Issue
+                        match = Regex.Match(bibTex, "number={(.*)}", RegexOptions.IgnoreCase);
+                        if (match.Success)
+                            txtIssue.Text = match.Groups[1].Value;
+
+                        //Trang
+                        match = Regex.Match(bibTex, "pages={(.*)}", RegexOptions.IgnoreCase);
+                        if (match.Success)
+                            txtTrang.Text = match.Groups[1].Value;
+                        break;
+                    case "INPROCEEDINGS":
+                        cbbLoaiTL.SelectedIndex = 1;
+
+                        //ten hoi nghi
+                        match = Regex.Match(bibTex, "booktitle={(.*)}", RegexOptions.IgnoreCase);
+                        if (match.Success)
+                            txtTenhoinghi.Text = match.Groups[1].Value;
+                        
+                        break;
+                    default:
+                        cbbLoaiTL.SelectedIndex = 0;
+                        break;
+                }
+
+                /*string html_content = client.DownloadString(txtURL_Auto.Text);
+                
+               //rtb_Content.Text = html_content;
+               // tomtat
+               Match match = Regex.Match(html_content, "<div class=\"article\">([\\s]*)<p>(.*)</p>([\\s]*)</div>", RegexOptions.IgnoreCase);
+               if (match.Success)
+                   txtTomtat.Text = match.Groups[2].Value;
+
+               //tieude
+               match = Regex.Match(html_content, "<h1>([\\s]*)(.*)([\\s]*)</h1>", RegexOptions.IgnoreCase);
+               if (match.Success)
+                  txtTieude.Text = match.Groups[2].Value;
+
+               //match = Regex.Match(html_content, "<dt>DOI:</dt>([\\s]*)(.*)([\\s]*)</h1>", RegexOptions.IgnoreCase);
+               */
+                tabPage1.Show();
+            }
         }
 
        
