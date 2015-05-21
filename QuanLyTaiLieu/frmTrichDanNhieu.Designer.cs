@@ -46,6 +46,37 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Kiểu trích dẫn";
             // 
+<<<<<<< HEAD
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Tên tài liệu";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(266, 56);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Thêm";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(266, 85);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Xóa";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+=======
+>>>>>>> origin/master
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(730, 435);

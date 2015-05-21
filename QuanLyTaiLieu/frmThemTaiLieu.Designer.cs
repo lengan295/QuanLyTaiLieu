@@ -430,6 +430,7 @@
             this.txtTomtat.Name = "txtTomtat";
             this.txtTomtat.Size = new System.Drawing.Size(256, 55);
             this.txtTomtat.TabIndex = 16;
+            this.txtTomtat.TextChanged += new System.EventHandler(this.txtTomtat_TextChanged);
             // 
             // label6
             // 

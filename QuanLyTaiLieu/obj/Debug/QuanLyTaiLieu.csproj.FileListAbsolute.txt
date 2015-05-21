@@ -12,3 +12,22 @@ D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.csproj.Ge
 D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.exe
 D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.pdb
 D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
+=======
+C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\bin\Debug\QuanLyTaiLieu.exe.config
+C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\bin\Debug\QuanLyTaiLieu.exe
+C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\bin\Debug\QuanLyTaiLieu.pdb
+C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.csprojResolveAssemblyReference.cache
+C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmManHinhChinh.resources
+C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmThemTaiLieu.resources
+C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmTrichDanNhieu.resources
+C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmXemThongTinTaiLieu.resources
+C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmXoaDanhMuc.resources
+C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.Properties.Resources.resources
+C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.csproj.GenerateResource.Cache
+C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.exe
+C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.pdb
+>>>>>>> origin/master
+C:\Users\Toan\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmCapNhat.resources
+=======
+>>>>>>> origin/master
