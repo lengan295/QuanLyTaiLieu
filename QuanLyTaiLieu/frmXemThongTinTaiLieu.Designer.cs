@@ -54,11 +54,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(268, 9);
+            this.label2.Location = new System.Drawing.Point(365, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 17);
+            this.label2.Size = new System.Drawing.Size(69, 17);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Xem Trước:";
+            this.label2.Text = "Tóm Tắt:";
             // 
             // label3
             // 
@@ -84,16 +84,16 @@
             // 
             this.txt_Xemthongtin.Location = new System.Drawing.Point(15, 30);
             this.txt_Xemthongtin.Name = "txt_Xemthongtin";
-            this.txt_Xemthongtin.Size = new System.Drawing.Size(250, 239);
+            this.txt_Xemthongtin.Size = new System.Drawing.Size(347, 239);
             this.txt_Xemthongtin.TabIndex = 1;
             this.txt_Xemthongtin.Text = "";
             this.txt_Xemthongtin.TextChanged += new System.EventHandler(this.txt_Xemthongtin_TextChanged);
             // 
             // txt_Xemtruoc
             // 
-            this.txt_Xemtruoc.Location = new System.Drawing.Point(271, 29);
+            this.txt_Xemtruoc.Location = new System.Drawing.Point(368, 29);
             this.txt_Xemtruoc.Name = "txt_Xemtruoc";
-            this.txt_Xemtruoc.Size = new System.Drawing.Size(445, 455);
+            this.txt_Xemtruoc.Size = new System.Drawing.Size(348, 240);
             this.txt_Xemtruoc.TabIndex = 2;
             this.txt_Xemtruoc.Text = "";
             this.txt_Xemtruoc.TextChanged += new System.EventHandler(this.txt_Xemtruoc_TextChanged);
@@ -102,14 +102,14 @@
             // 
             this.txt_Ghichu.Location = new System.Drawing.Point(12, 292);
             this.txt_Ghichu.Name = "txt_Ghichu";
-            this.txt_Ghichu.Size = new System.Drawing.Size(252, 191);
+            this.txt_Ghichu.Size = new System.Drawing.Size(704, 191);
             this.txt_Ghichu.TabIndex = 3;
             this.txt_Ghichu.Text = "";
             // 
             // btn_Luu
             // 
             this.btn_Luu.Font = new System.Drawing.Font("Times New Roman", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Luu.Location = new System.Drawing.Point(160, 489);
+            this.btn_Luu.Location = new System.Drawing.Point(12, 489);
             this.btn_Luu.Name = "btn_Luu";
             this.btn_Luu.Size = new System.Drawing.Size(104, 41);
             this.btn_Luu.TabIndex = 4;
