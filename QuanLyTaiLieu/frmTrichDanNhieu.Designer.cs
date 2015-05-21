@@ -38,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.listView2 = new System.Windows.Forms.ListView();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +61,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(493, 63);
+            this.button1.Location = new System.Drawing.Point(266, 56);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -69,7 +70,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(495, 99);
+            this.button2.Location = new System.Drawing.Point(266, 85);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 6;
@@ -117,9 +118,9 @@
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(39, 56);
+            this.listView1.Location = new System.Drawing.Point(365, 56);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(448, 135);
+            this.listView1.Size = new System.Drawing.Size(203, 135);
             this.listView1.TabIndex = 11;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -131,11 +132,19 @@
             this.listView2.TabIndex = 12;
             this.listView2.UseCompatibleStateImageBehavior = false;
             // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(39, 55);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(203, 135);
+            this.treeView1.TabIndex = 13;
+            // 
             // frmTrichDanNhieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(582, 446);
+            this.Controls.Add(this.treeView1);
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label3);
@@ -165,5 +174,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
