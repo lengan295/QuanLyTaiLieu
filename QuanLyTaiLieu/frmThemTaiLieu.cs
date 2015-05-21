@@ -279,6 +279,11 @@ namespace QuanLyTaiLieu
             this.Dispose();
         }
 
+        private void txtTomtat_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
        
     }
 }
