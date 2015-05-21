@@ -110,7 +110,7 @@ namespace QuanLyTaiLieu
             result = MessageBox.Show(message, caption, buttons);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                DialogResult result2 = MessageBox.Show("Đã xóa!", "Thông báo xác nhận", MessageBoxButtons.OK);
+                MessageBox.Show("Đã xóa!", "Thông báo xác nhận", MessageBoxButtons.OK);
             }
         }
 

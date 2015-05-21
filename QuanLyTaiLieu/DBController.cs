@@ -29,6 +29,7 @@ namespace QuanLyTaiLieu
             }
         }
 
+        #region Cac ham get
         public List<DanhMuc> getAllDanhMuc()
         {
             List<DanhMuc> list = new List<DanhMuc>();
@@ -51,6 +52,12 @@ namespace QuanLyTaiLieu
             {
                 this.error = e.ToString();
             }
+            return list;
+        }
+
+        public List<DanhMuc> getCayDanhMuc()
+        {
+            List<DanhMuc> list = getAllDanhMuc();
 
             myCommand.CommandText = "SELECT * FROM CayDanhMuc";
             try
@@ -284,8 +291,22 @@ namespace QuanLyTaiLieu
             }
             return null;
         }
+        #endregion
 
-        public void addTaiLieu(TaiLieu tl)
+        #region Cac ham add
+
+        public void addDanhMuc(DanhMuc dm)
+        {
+            myCommand.CommandText = "Insert into DanhMuc(TenDanhMuc)" +
+                                    "values(@TenDanhMuc)";
+            myCommand.Parameters.Clear();
+            myCommand.Parameters.Add(new SqlParameter("TenDanhMuc", dm.TenDanhMuc));
+
+            myCommand.ExecuteNonQuery();
+        }
+
+
+        public void addTaiLieu(TaiLieu tl, List<DanhMuc> listdm)
         {
             myCommand.CommandText = "Insert into TaiLieu(LoaiTaiLieu, TacGia, TieuDe, Nam, TomTat, [File], URL, DOI)"+
                                     "values(@LoaiTaiLieu, @TacGia, @TieuDe, @Nam, @TomTat, @File, @URL, @DOI);SELECT CAST(scope_identity() AS int);";
@@ -301,12 +322,20 @@ namespace QuanLyTaiLieu
 
             tl.MaTL = (int) myCommand.ExecuteScalar();
 
-
+            foreach (DanhMuc dm in listdm)
+            {
+                myCommand.CommandText = "Insert into DMTL(MaDM, MaTL) values (@MaDM, @MaTL);";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("MaDM", dm.MaDM));
+                myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
+                myCommand.ExecuteNonQuery();
+            }
+            
         }
 
-        public void addBaiBao(BaiBao bb)
+        public void addBaiBao(BaiBao bb, List<DanhMuc> listdm)
         {
-            addTaiLieu(bb);
+            addTaiLieu(bb, listdm);
             myCommand.CommandText = "Insert into BaiBao(MaTL, TapChi, Trang, Volume, Issue)" +
                                     "values(@MaTL,@TapChi, @Trang, @Volume, @Issue)";
             myCommand.Parameters.Clear();
@@ -319,9 +348,9 @@ namespace QuanLyTaiLieu
             myCommand.ExecuteNonQuery();
         }
 
-        public void addTrangWeb(TrangWeb web)
+        public void addTrangWeb(TrangWeb web, List<DanhMuc> listdm)
         {
-            addTaiLieu(web);
+            addTaiLieu(web, listdm);
             myCommand.CommandText = "Insert into TrangWeb(MaTL, ToChuc, Ngay, Thang, NgayTruyCap)" +
                                     "values(@MaTL,@ToChuc, @Ngay, @Thang, @NgayTruyCap)";
             myCommand.Parameters.Clear();
@@ -329,14 +358,14 @@ namespace QuanLyTaiLieu
             myCommand.Parameters.Add(new SqlParameter("ToChuc", web.ToChuc));
             myCommand.Parameters.Add(new SqlParameter("Ngay", web.Ngay));
             myCommand.Parameters.Add(new SqlParameter("Thang", web.Thang));
-            myCommand.Parameters.Add(new SqlParameter("NgayTruyCap", web.NgayTruyCap));
+            myCommand.Parameters.Add(new SqlParameter("NgayTruyCap", web.NgayTruyCap.ToString("yyyy-MM-dd")));
 
             myCommand.ExecuteNonQuery();
         }
 
-        public void addSach(Sach sh)
+        public void addSach(Sach sh, List<DanhMuc> listdm)
         {
-            addTaiLieu(sh);
+            addTaiLieu(sh, listdm);
             myCommand.CommandText = "Insert into Sach(MaTL, NhaXB, TaiBan, ThanhPho)" +
                                     "values(@MaTL, @NhaXB, @TaiBan, @ThanhPho)";
             myCommand.Parameters.Clear();
@@ -348,10 +377,10 @@ namespace QuanLyTaiLieu
             myCommand.ExecuteNonQuery();
         }
 
-        public void addProceeding(Proceedings pr)
+        public void addProceeding(Proceedings pr, List<DanhMuc> listdm)
         {
-            addTaiLieu(pr);
-            myCommand.CommandText = "Insert into Sach(MaTL, TenHoiNghi, ThanhPho)" +
+            addTaiLieu(pr, listdm);
+            myCommand.CommandText = "Insert into Proceeding(MaTL, TenHoiNghi, ThanhPho)" +
                                     "values(@MaTL, @TenHoiNghi, @ThanhPho)";
             myCommand.Parameters.Clear();
             myCommand.Parameters.Add(new SqlParameter("MaTL", pr.MaTL));
@@ -361,6 +390,9 @@ namespace QuanLyTaiLieu
             myCommand.ExecuteNonQuery();
         }
 
+        #endregion
+
+        #region cac ham update
         public void updateTaiLieu(TaiLieu tl)
         {
             myCommand.CommandText = "Update TaiLieu set LoaiTaiLieu=@LoaiTaiLieu, TacGia=@TacGia, TieuDe=@TieuDe, Nam=@Nam, TomTat=@TomTat, [File]=@File, URL=@URL, DOI=@DOI where MaTL=@MaTL";
@@ -408,13 +440,13 @@ namespace QuanLyTaiLieu
         public void UpdateTrangWeb(TrangWeb web)
         {
             updateTaiLieu(web);
-            myCommand.CommandText = "Update Sach set ToChuc=@ToChuc, Ngay=@Ngay, Thang=@Thang, NgayTruyCap=@NgayTruyCap where MaTL=@MaTL";
+            myCommand.CommandText = "Update TrangWeb set ToChuc=@ToChuc, Ngay=@Ngay, Thang=@Thang, NgayTruyCap=@NgayTruyCap where MaTL=@MaTL";
             myCommand.Parameters.Clear();
             myCommand.Parameters.Add(new SqlParameter("MaTL", web.MaTL));
             myCommand.Parameters.Add(new SqlParameter("ToChuc", web.ToChuc));
             myCommand.Parameters.Add(new SqlParameter("Ngay", web.Ngay));
             myCommand.Parameters.Add(new SqlParameter("Thang", web.Thang));
-            myCommand.Parameters.Add(new SqlParameter("NgayTruyCap", web.NgayTruyCap));
+            myCommand.Parameters.Add(new SqlParameter("NgayTruyCap", web.NgayTruyCap.ToString("yyyy-MM-dd")));
 
             myCommand.ExecuteNonQuery();
         }
@@ -422,21 +454,11 @@ namespace QuanLyTaiLieu
         public void UpdateProceeding(Proceedings pr)
         {
             updateTaiLieu(pr);
-            myCommand.CommandText = "Update Sach set TenHoiNghi=@TenHoiNghi, ThanhPho=@ThanhPho where MaTL=@MaTL";
+            myCommand.CommandText = "Update Proceeding set TenHoiNghi=@TenHoiNghi, ThanhPho=@ThanhPho where MaTL=@MaTL";
             myCommand.Parameters.Clear();
             myCommand.Parameters.Add(new SqlParameter("MaTL", pr.MaTL));
             myCommand.Parameters.Add(new SqlParameter("TenHoiNghi", pr.TenHoiNghi));
             myCommand.Parameters.Add(new SqlParameter("ThanhPho", pr.ThanhPho));
-
-            myCommand.ExecuteNonQuery();
-        }
-
-        public void addDanhMuc(DanhMuc dm)
-        {
-            myCommand.CommandText = "Insert into DanhMuc(TenDanhMuc)" +
-                                    "values(@TenDanhMuc)";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("TenDanhMuc", dm.TenDanhMuc));
 
             myCommand.ExecuteNonQuery();
         }
@@ -451,13 +473,25 @@ namespace QuanLyTaiLieu
             myCommand.ExecuteNonQuery();
         }
 
+        public void UpdateGhichu(TaiLieu tl)
+        {
+            myCommand.CommandText = "Update TaiLieu set GhiChu=@GhiChu where MaTL=@MaTL";
+            myCommand.Parameters.Clear();
+            myCommand.Parameters.Add(new SqlParameter("GhiChu", tl.GhiChu));
+            myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
+
+            myCommand.ExecuteNonQuery();
+        }
+        #endregion
+
         public void deleteTaiLieu(TaiLieu tl)
         {
-            myCommand.CommandText = "Delete from TaiLieu where MaTL=@MaTL;"
+            myCommand.CommandText = "Delete from DMTL where MaTL=@MaTL;"
                                     + "Delete from BaiBao where MaTL=@MaTL;"
                                     + "Delete from Sach where MaTL=@MaTL;"
                                     + "Delete from TrangWeb where MaTL=@MaTL;"
-                                    + "Delete from Proceeding where MaTL=@MaTL;";
+                                    + "Delete from Proceeding where MaTL=@MaTL;"
+                                    + "Delete from TaiLieu where MaTL=@MaTL;";
             myCommand.Parameters.Clear();
             myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
 
@@ -472,14 +506,6 @@ namespace QuanLyTaiLieu
 
             myCommand.ExecuteNonQuery();
         }
-        public void UpdateGhichu(TaiLieu tl)
-        {
-            myCommand.CommandText = "Update TaiLieu set GhiChu=@GhiChu where MaTL=@MaTL";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("GhiChu", tl.GhiChu));
-            myCommand.Parameters.Add(new SqlParameter("MaDM", tl.MaTL));
-
-            myCommand.ExecuteNonQuery();
-        }
+        
     }
 }
