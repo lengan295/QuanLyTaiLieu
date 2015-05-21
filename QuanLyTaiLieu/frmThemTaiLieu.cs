@@ -317,7 +317,7 @@ namespace QuanLyTaiLieu
                     loaitailieu = match.Groups[1].Value;
 
                 //tieu de
-                match = Regex.Match(bibTex, "title={(.*)}", RegexOptions.IgnoreCase);
+                match = Regex.Match(bibTex, "\\stitle={(.*)}", RegexOptions.IgnoreCase);
                 if (match.Success)
                     txtTieude.Text = match.Groups[1].Value;
                 else

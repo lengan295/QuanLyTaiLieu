@@ -97,7 +97,10 @@ namespace QuanLyTaiLieu
             for (int i = 0; i < list.Count; i++)
             {
                 if (list[i].DMCha != null)
+                {
                     list.Remove(list[i]);
+                    i--;
+                }
             }
             return list;
         }
@@ -348,14 +351,33 @@ namespace QuanLyTaiLieu
 
         #region Cac ham add
 
-        public void addDanhMuc(DanhMuc dm)
+        public bool addDanhMuc(DanhMuc dm)
         {
-            myCommand.CommandText = "Insert into DanhMuc(TenDanhMuc)" +
-                                    "values(@TenDanhMuc)";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("TenDanhMuc", dm.TenDanhMuc));
+            try
+            {
+                myCommand.CommandText = "Insert into DanhMuc(TenDanhMuc)" +
+                                            "values(@TenDanhMuc);SELECT CAST(scope_identity() AS int);";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("TenDanhMuc", dm.TenDanhMuc));
 
-            myCommand.ExecuteNonQuery();
+                dm.MaDM = (int)myCommand.ExecuteScalar();
+
+                if (dm.DMCha != null)
+                {
+                    myCommand.CommandText = "Insert into CayDanhMuc(MaDMCha,MaDMCon)" +
+                                    "values(@MaDMCha,@MaDMCon);";
+                    myCommand.Parameters.Clear();
+                    myCommand.Parameters.Add(new SqlParameter("MaDMCha", dm.DMCha.MaDM));
+                    myCommand.Parameters.Add(new SqlParameter("MaDMCon", dm.MaDM));
+                    myCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
+            return true;
         }
 
 

@@ -7,6 +7,10 @@ namespace QuanLyTaiLieu
 {
     public class DanhMuc
     {
+        public DanhMuc()
+        {
+        }
+
         public DanhMuc(int MaDM, string TenDM)
         {
             // TODO: Complete member initialization

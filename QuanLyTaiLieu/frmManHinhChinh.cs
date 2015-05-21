@@ -31,8 +31,7 @@ namespace QuanLyTaiLieu
                 list_Docs.Columns.Add("Tác giả", 150);
                 list_Docs.Columns.Add("Tiêu đề", 300);
                 list_Docs.Columns.Add("Năm", 50);
-
-                listDM = dbcon.getCayDanhMuc();
+                
                 //listTL = dbcon.getAllTaiLieu();
 
                 UpdateCatalogueTree();
@@ -44,7 +43,7 @@ namespace QuanLyTaiLieu
                 list_Docs.SelectedIndexChanged += list_Docs_SelectedIndexChanged;
             }
 
-            tree_catalogue.ExpandAll();
+            
             list_Docs.FullRowSelect = true;       
         }
 
@@ -167,6 +166,8 @@ namespace QuanLyTaiLieu
 
         private void UpdateCatalogueTree()
         {
+            listDM = dbcon.getCayDanhMuc();
+            tree_catalogue.Nodes.Clear();
             int SL = dbcon.getSoLuong(null);
             TreeNode node = new TreeNode("Tất cả (" + SL + ")");
             node.Tag = null;
@@ -188,6 +189,7 @@ namespace QuanLyTaiLieu
                     }
                 }
             }
+            tree_catalogue.ExpandAll();
         }
 
         private void UpdateButtons(bool state)
@@ -196,6 +198,13 @@ namespace QuanLyTaiLieu
             //btn_citation.Enabled = state;
             btn_Edit.Enabled = state;
             btn_OpenDoc.Enabled = state;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            frmThemDanhMuc frm = new frmThemDanhMuc(listDM);
+            frm.ShowDialog();
+            UpdateCatalogueTree();
         }
     }
 }

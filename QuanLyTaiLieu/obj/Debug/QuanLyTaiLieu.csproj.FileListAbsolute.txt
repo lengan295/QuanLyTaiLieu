@@ -12,3 +12,4 @@ D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.csproj.Ge
 D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.exe
 D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.pdb
 D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.csprojResolveAssemblyReference.cache
+D:\LeNgan\projects\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmThemDanhMuc.resources
