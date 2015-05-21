@@ -32,9 +32,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.list_Docs = new System.Windows.Forms.ListView();
             this.tree_catalogue = new System.Windows.Forms.TreeView();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.list_Docs = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // label1
@@ -54,6 +54,7 @@
             this.button3.TabIndex = 7;
             this.button3.Text = "Copy";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -75,21 +76,12 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 9;
-            this.comboBox1.SelectedIndex = 0;
-            // 
-            // list_Docs
-            // 
-            this.list_Docs.Location = new System.Drawing.Point(211, 33);
-            this.list_Docs.Name = "list_Docs";
-            this.list_Docs.Size = new System.Drawing.Size(675, 172);
-            this.list_Docs.TabIndex = 11;
-            this.list_Docs.UseCompatibleStateImageBehavior = false;
             // 
             // tree_catalogue
             // 
-            this.tree_catalogue.Location = new System.Drawing.Point(39, 33);
+            this.tree_catalogue.Location = new System.Drawing.Point(15, 33);
             this.tree_catalogue.Name = "tree_catalogue";
-            this.tree_catalogue.Size = new System.Drawing.Size(119, 416);
+            this.tree_catalogue.Size = new System.Drawing.Size(190, 416);
             this.tree_catalogue.TabIndex = 13;
             // 
             // richTextBox1
@@ -99,6 +91,15 @@
             this.richTextBox1.Size = new System.Drawing.Size(675, 209);
             this.richTextBox1.TabIndex = 14;
             this.richTextBox1.Text = "";
+            // 
+            // list_Docs
+            // 
+            this.list_Docs.Location = new System.Drawing.Point(211, 33);
+            this.list_Docs.Name = "list_Docs";
+            this.list_Docs.Size = new System.Drawing.Size(675, 172);
+            this.list_Docs.TabIndex = 11;
+            this.list_Docs.UseCompatibleStateImageBehavior = false;
+            this.list_Docs.View = System.Windows.Forms.View.Details;
             // 
             // frmTrichDanNhieu
             // 
@@ -125,8 +126,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ListView list_Docs;
         private System.Windows.Forms.TreeView tree_catalogue;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ListView list_Docs;
     }
 }
