@@ -122,7 +122,7 @@ namespace QuanLyTaiLieu
 
         private String TrichDanHarvard(TaiLieu tl)
         {
-            String s;
+            String s="";
             if(tl.LoaiTaiLieu.Trim()=="book")
             {
                 Sach book = new Sach(tl);
@@ -148,7 +148,7 @@ namespace QuanLyTaiLieu
                     s+=", volume "+article.Volume;
                 if(article.Issue!=0)
                     s+=", issue "+article.Issue;
-                if(article.Trang!=0)
+                if(article.Trang.Trim()!="")
                     s+="trang "+ article.Trang;
                 s+=".";
             }
@@ -163,7 +163,7 @@ namespace QuanLyTaiLieu
                 if(misc.Nam!=0)
                     s+="."+ misc.Nam;
                 
-                if(misc.NgayTruyCap!=0)
+                if(misc.NgayTruyCap!=new DateTime(1,1,1))
                     s+=".Truy cập ngày "+misc.NgayTruyCap+")";
                 if(misc.URL!="")
                     s+= " từ "+misc.URL;
@@ -174,9 +174,9 @@ namespace QuanLyTaiLieu
             {
                 Proceedings inproceedings = new Proceedings(tl);
                 s = inproceedings.TacGia+", "+inproceedings.TieuDe;
-                if(inproceedings.TenHoiNghi!="")
+                if(inproceedings.TenHoiNghi.Trim()!="")
                     s +=", "+ inproceedings.TenHoiNghi;
-                if(inproceedings.ThanhPho)
+                if(inproceedings.ThanhPho.Trim()!="")
                     s+= ", " + inproceedings.ThanhPho;
                 if(inproceedings.Nam!=0)
                     s+=", "+inproceedings.Nam;
@@ -188,9 +188,9 @@ namespace QuanLyTaiLieu
                         
         }
 
-        private TrichDanChicago(TaiLieu tl)
+        private string TrichDanChicago(TaiLieu tl)
         {
-            String s;
+            String s="";
             if(tl.LoaiTaiLieu.Trim()=="book")
             {
                 Sach book = new Sach(tl);
@@ -211,7 +211,7 @@ namespace QuanLyTaiLieu
                     s +=", "+ article.TapChi;
                 if(article.Nam!=0)
                     s+=", "+article.Nam;
-                if(article.Trang!=0)
+                if(article.Trang.Trim()!="")
                     s+=":"+ article.Trang;
                 s+=".";
             }
@@ -227,7 +227,7 @@ namespace QuanLyTaiLieu
                     s+="."+ misc.Nam;
                 if(misc.URL!="")
                     s+= ". "+misc.URL;
-                if(misc.NgayTruyCap!=0)
+                if(misc.NgayTruyCap!=new DateTime(1,1,1))
                     s+=". (truy cập ngày "+misc.NgayTruyCap+")";
                 s+=".";
 
@@ -238,7 +238,7 @@ namespace QuanLyTaiLieu
                 s = inproceedings.TacGia+". "+inproceedings.TieuDe;
                 if(inproceedings.TenHoiNghi!="")
                     s +=". "+ inproceedings.TenHoiNghi;
-                if(inproceedings.ThanhPho)
+                if(inproceedings.ThanhPho.Trim()!="")
                     s+= ". " + inproceedings.ThanhPho;
                 if(inproceedings.Nam!=0)
                     s+=", "+inproceedings.Nam;

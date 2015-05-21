@@ -193,7 +193,7 @@ namespace QuanLyTaiLieu
         private void UpdateButtons(bool state)
         {            
             btn_Delete.Enabled = state;
-            btn_citation.Enabled = state;
+            //btn_citation.Enabled = state;
             btn_Edit.Enabled = state;
             btn_OpenDoc.Enabled = state;
         }
