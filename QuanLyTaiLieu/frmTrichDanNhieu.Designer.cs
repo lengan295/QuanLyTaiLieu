@@ -29,16 +29,12 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.list_Docs = new System.Windows.Forms.ListView();
+            this.tree_catalogue = new System.Windows.Forms.TreeView();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -50,6 +46,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Kiểu trích dẫn";
             // 
+<<<<<<< HEAD
             // label2
             // 
             this.label2.AutoSize = true;
@@ -78,9 +75,11 @@
             this.button2.Text = "Xóa";
             this.button2.UseVisualStyleBackColor = true;
             // 
+=======
+>>>>>>> origin/master
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(412, 411);
+            this.button3.Location = new System.Drawing.Point(730, 435);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 7;
@@ -89,7 +88,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(493, 411);
+            this.button4.Location = new System.Drawing.Point(811, 435);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 8;
@@ -100,61 +99,49 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "APA",
             "Harvard",
-            "Chicago"});
+            "Chicago",
+            "APA"});
             this.comboBox1.Location = new System.Drawing.Point(105, 6);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 9;
+            this.comboBox1.SelectedIndex = 0;
             // 
-            // label3
+            // list_Docs
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 194);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Trích dẫn";
+            this.list_Docs.Location = new System.Drawing.Point(211, 33);
+            this.list_Docs.Name = "list_Docs";
+            this.list_Docs.Size = new System.Drawing.Size(675, 172);
+            this.list_Docs.TabIndex = 11;
+            this.list_Docs.UseCompatibleStateImageBehavior = false;
             // 
-            // listView1
+            // tree_catalogue
             // 
-            this.listView1.Location = new System.Drawing.Point(365, 56);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(203, 135);
-            this.listView1.TabIndex = 11;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.tree_catalogue.Location = new System.Drawing.Point(39, 33);
+            this.tree_catalogue.Name = "tree_catalogue";
+            this.tree_catalogue.Size = new System.Drawing.Size(119, 416);
+            this.tree_catalogue.TabIndex = 13;
             // 
-            // listView2
+            // richTextBox1
             // 
-            this.listView2.Location = new System.Drawing.Point(39, 211);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(531, 194);
-            this.listView2.TabIndex = 12;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            // 
-            // treeView1
-            // 
-            this.treeView1.Location = new System.Drawing.Point(39, 55);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(203, 135);
-            this.treeView1.TabIndex = 13;
+            this.richTextBox1.Location = new System.Drawing.Point(211, 220);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(675, 209);
+            this.richTextBox1.TabIndex = 14;
+            this.richTextBox1.Text = "";
             // 
             // frmTrichDanNhieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 446);
-            this.Controls.Add(this.treeView1);
-            this.Controls.Add(this.listView2);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(898, 461);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.tree_catalogue);
+            this.Controls.Add(this.list_Docs);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmTrichDanNhieu";
             this.Text = "frmTrichDanNhieu";
@@ -166,15 +153,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ListView list_Docs;
+        private System.Windows.Forms.TreeView tree_catalogue;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
