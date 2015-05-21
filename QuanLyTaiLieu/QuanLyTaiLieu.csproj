@@ -77,12 +77,6 @@
     <Compile Include="frmTrichDanNhieu.Designer.cs">
       <DependentUpon>frmTrichDanNhieu.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmXemTaiLieu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmXemTaiLieu.Designer.cs">
-      <DependentUpon>frmXemTaiLieu.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmXemThongTinTaiLieu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +89,7 @@
     <Compile Include="frmXoaDanhMuc.Designer.cs">
       <DependentUpon>frmXoaDanhMuc.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListBoxItem.cs" />
     <Compile Include="Proceedings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

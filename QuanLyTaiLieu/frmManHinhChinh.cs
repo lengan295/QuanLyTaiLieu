@@ -32,7 +32,7 @@ namespace QuanLyTaiLieu
                 list_Docs.Columns.Add("Tiêu đề", 300);
                 list_Docs.Columns.Add("Năm", 50);
 
-                listDM = dbcon.getAllDanhMuc();
+                listDM = dbcon.getCayDanhMuc();
                 listTL = dbcon.getAllTaiLieu();
 
                 UpdateCatalogueTree();

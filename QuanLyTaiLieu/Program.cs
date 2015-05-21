@@ -16,7 +16,7 @@ namespace QuanLyTaiLieu
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmThemTaiLieu());
+            Application.Run(new frmManHinhChinh());
         }
     }
 }

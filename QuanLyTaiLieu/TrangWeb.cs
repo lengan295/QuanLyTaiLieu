@@ -20,48 +20,12 @@ namespace QuanLyTaiLieu
             this.URL = tl.URL;
             this.DOI = tl.DOI;
         }
-        public string ToChuc
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public string ToChuc;
 
-        public int Ngay
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public int Ngay;
 
-        public int Thang
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public int Thang;
 
-        public DateTime NgayTruyCap
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public DateTime NgayTruyCap;
     }
 }
