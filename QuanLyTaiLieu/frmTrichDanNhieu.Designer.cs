@@ -45,8 +45,7 @@
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Kiểu trích dẫn";
-            // 
-<<<<<<< HEAD
+            /*/ 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -74,9 +73,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Xóa";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-=======
->>>>>>> origin/master
+            /*/ 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(730, 435);
