@@ -255,5 +255,10 @@ namespace QuanLyTaiLieu
             richTextBox1.Copy();
             MessageBox.Show("Đã copy phần trích dẫn");
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

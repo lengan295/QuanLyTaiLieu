@@ -47,7 +47,7 @@ namespace QuanLyTaiLieu
             else if (n < 0 || n > 2015) MessageBox.Show("Năm nằm ngoài phạm vi cho phép (0000-2015).");
             //else if (radiobtn1.Checked == true && txtTep.Text == "") MessageBox.Show("Chưa nhập đường dẫn của tệp tài liệu.");
             //else if (radiobtn2.Checked == true && txtLink.Text == "") MessageBox.Show("Chưa nhập Link web chứa tài liệu.");
-            else if (checklistbox.SelectedItems.Count == 0) MessageBox.Show("Chưa chọn các Danh mục chứa tài liệu.");
+            else if (checklistbox.CheckedItems.Count == 0) MessageBox.Show("Chưa chọn các Danh mục chứa tài liệu.");
             else
             {
                 TaiLieu tl = new TaiLieu();
@@ -277,6 +277,11 @@ namespace QuanLyTaiLieu
         private void btbCancel_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void txtTomtat_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
        

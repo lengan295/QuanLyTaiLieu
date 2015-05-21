@@ -111,10 +111,10 @@ namespace QuanLyTaiLieu
             else if (n < 0 || n > 2015) MessageBox.Show("Năm nằm ngoài phạm vi cho phép (0000-2015).");
             //else if (radiobtn1.Checked == true && txtTep.Text == "") MessageBox.Show("Chưa nhập đường dẫn của tệp tài liệu.");
             //else if (radiobtn2.Checked == true && txtLink.Text == "") MessageBox.Show("Chưa nhập Link web chứa tài liệu.");
-            else if (checklistbox.SelectedItems.Count == 0) MessageBox.Show("Chưa chọn các Danh mục chứa tài liệu.");
+            else if (checklistbox.CheckedItems.Count == 0) MessageBox.Show("Chưa chọn các Danh mục chứa tài liệu.");
             else
             {
-                TaiLieu tl = new TaiLieu();
+                //TaiLieu tl = new TaiLieu();
                 tl.TacGia = txtTacgia.Text;
                 tl.TieuDe = txtTieude.Text;
                 tl.Nam = int.Parse(txtNam.Text);
@@ -136,14 +136,14 @@ namespace QuanLyTaiLieu
                         bb.Trang = txtTrang.Text;
                         bb.Volume = int.Parse(txtVolume.Text);
                         bb.Issue = int.Parse(txtIssue.Text);
-                        dbcon.addBaiBao(bb, listDM);
+                        dbcon.UpdateBaiBao(bb, listDM);
                         break;
                     case 1:
                         tl.LoaiTaiLieu = "inproceedings";
                         Proceedings pr = new Proceedings(tl);
                         pr.TenHoiNghi = txtTenhoinghi.Text;
                         pr.ThanhPho = txtThanhpho.Text;
-                        dbcon.addProceeding(pr, listDM);
+                        dbcon.UpdateProceeding(pr, listDM);
                         break;
                     case 2:
                         tl.LoaiTaiLieu = "book";
@@ -151,7 +151,7 @@ namespace QuanLyTaiLieu
                         sh.NhaXB = txtNXB.Text;
                         sh.TaiBan = txtTaiban.Text;
                         sh.ThanhPho = txtThanhpho.Text;
-                        dbcon.addSach(sh, listDM);
+                        dbcon.UpdateSach(sh, listDM);
                         break;
                     case 3:
                         tl.LoaiTaiLieu = "misc";
@@ -160,7 +160,7 @@ namespace QuanLyTaiLieu
                         web.Ngay = int.Parse(txtngay.Text);
                         web.Thang = int.Parse(txtthang.Text);
                         web.NgayTruyCap = DateTime.Parse(txtngaytruycap.Text);
-                        dbcon.addTrangWeb(web, listDM);
+                        dbcon.UpdateTrangWeb(web, listDM);
                         break;
                     default:
                         break;
