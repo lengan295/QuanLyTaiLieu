@@ -335,205 +335,357 @@ namespace QuanLyTaiLieu
         }
 
 
-        public void addTaiLieu(TaiLieu tl, List<DanhMuc> listdm)
+        public bool addTaiLieu(TaiLieu tl, List<DanhMuc> listdm)
         {
-            myCommand.CommandText = "Insert into TaiLieu(LoaiTaiLieu, TacGia, TieuDe, Nam, TomTat, [File], URL, DOI)"+
-                                    "values(@LoaiTaiLieu, @TacGia, @TieuDe, @Nam, @TomTat, @File, @URL, @DOI);SELECT CAST(scope_identity() AS int);";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("LoaiTaiLieu",tl.LoaiTaiLieu));
-            myCommand.Parameters.Add(new SqlParameter("TacGia", tl.TacGia));
-            myCommand.Parameters.Add(new SqlParameter("TieuDe", tl.TieuDe));
-            myCommand.Parameters.Add(new SqlParameter("Nam", tl.Nam));
-            myCommand.Parameters.Add(new SqlParameter("TomTat", tl.TomTat));
-            myCommand.Parameters.Add(new SqlParameter("File", tl.File));
-            myCommand.Parameters.Add(new SqlParameter("URL", tl.URL));
-            myCommand.Parameters.Add(new SqlParameter("DOI", tl.DOI));
-
-            tl.MaTL = (int) myCommand.ExecuteScalar();
-
-            foreach (DanhMuc dm in listdm)
+            try
             {
-                myCommand.CommandText = "Insert into DMTL(MaDM, MaTL) values (@MaDM, @MaTL);";
+                myCommand.CommandText = "Insert into TaiLieu(LoaiTaiLieu, TacGia, TieuDe, Nam, TomTat, [File], URL, DOI)" +
+                                            "values(@LoaiTaiLieu, @TacGia, @TieuDe, @Nam, @TomTat, @File, @URL, @DOI);SELECT CAST(scope_identity() AS int);";
                 myCommand.Parameters.Clear();
-                myCommand.Parameters.Add(new SqlParameter("MaDM", dm.MaDM));
-                myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
+                myCommand.Parameters.Add(new SqlParameter("LoaiTaiLieu", tl.LoaiTaiLieu));
+                myCommand.Parameters.Add(new SqlParameter("TacGia", tl.TacGia));
+                myCommand.Parameters.Add(new SqlParameter("TieuDe", tl.TieuDe));
+                myCommand.Parameters.Add(new SqlParameter("Nam", tl.Nam));
+                myCommand.Parameters.Add(new SqlParameter("TomTat", tl.TomTat));
+                myCommand.Parameters.Add(new SqlParameter("File", tl.File));
+                myCommand.Parameters.Add(new SqlParameter("URL", tl.URL));
+                myCommand.Parameters.Add(new SqlParameter("DOI", tl.DOI));
+
+                tl.MaTL = (int)myCommand.ExecuteScalar();
+
+                foreach (DanhMuc dm in listdm)
+                {
+                    myCommand.CommandText = "Insert into DMTL(MaDM, MaTL) values (@MaDM, @MaTL);";
+                    myCommand.Parameters.Clear();
+                    myCommand.Parameters.Add(new SqlParameter("MaDM", dm.MaDM));
+                    myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
+                    myCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool addBaiBao(BaiBao bb, List<DanhMuc> listdm)
+        {
+            try
+            {
+                addTaiLieu(bb, listdm);
+                myCommand.CommandText = "Insert into BaiBao(MaTL, TapChi, Trang, Volume, Issue)" +
+                                        "values(@MaTL,@TapChi, @Trang, @Volume, @Issue)";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("MaTL", bb.MaTL));
+                myCommand.Parameters.Add(new SqlParameter("TapChi", bb.TapChi));
+                myCommand.Parameters.Add(new SqlParameter("Trang", bb.Trang));
+                myCommand.Parameters.Add(new SqlParameter("Volume", bb.Volume));
+                myCommand.Parameters.Add(new SqlParameter("Issue", bb.Issue));
+
                 myCommand.ExecuteNonQuery();
             }
-            
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
+
+            return true;
         }
 
-        public void addBaiBao(BaiBao bb, List<DanhMuc> listdm)
+        public bool addTrangWeb(TrangWeb web, List<DanhMuc> listdm)
         {
-            addTaiLieu(bb, listdm);
-            myCommand.CommandText = "Insert into BaiBao(MaTL, TapChi, Trang, Volume, Issue)" +
-                                    "values(@MaTL,@TapChi, @Trang, @Volume, @Issue)";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("MaTL", bb.MaTL));
-            myCommand.Parameters.Add(new SqlParameter("TapChi", bb.TapChi));
-            myCommand.Parameters.Add(new SqlParameter("Trang", bb.Trang));
-            myCommand.Parameters.Add(new SqlParameter("Volume", bb.Volume));
-            myCommand.Parameters.Add(new SqlParameter("Issue", bb.Issue));
+            try
+            {
+                addTaiLieu(web, listdm);
+                myCommand.CommandText = "Insert into TrangWeb(MaTL, ToChuc, Ngay, Thang, NgayTruyCap)" +
+                                        "values(@MaTL,@ToChuc, @Ngay, @Thang, @NgayTruyCap)";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("MaTL", web.MaTL));
+                myCommand.Parameters.Add(new SqlParameter("ToChuc", web.ToChuc));
+                myCommand.Parameters.Add(new SqlParameter("Ngay", web.Ngay));
+                myCommand.Parameters.Add(new SqlParameter("Thang", web.Thang));
+                myCommand.Parameters.Add(new SqlParameter("NgayTruyCap", web.NgayTruyCap.ToString("yyyy-MM-dd")));
 
-            myCommand.ExecuteNonQuery();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
+
+            return true;
         }
 
-        public void addTrangWeb(TrangWeb web, List<DanhMuc> listdm)
+        public bool addSach(Sach sh, List<DanhMuc> listdm)
         {
-            addTaiLieu(web, listdm);
-            myCommand.CommandText = "Insert into TrangWeb(MaTL, ToChuc, Ngay, Thang, NgayTruyCap)" +
-                                    "values(@MaTL,@ToChuc, @Ngay, @Thang, @NgayTruyCap)";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("MaTL", web.MaTL));
-            myCommand.Parameters.Add(new SqlParameter("ToChuc", web.ToChuc));
-            myCommand.Parameters.Add(new SqlParameter("Ngay", web.Ngay));
-            myCommand.Parameters.Add(new SqlParameter("Thang", web.Thang));
-            myCommand.Parameters.Add(new SqlParameter("NgayTruyCap", web.NgayTruyCap.ToString("yyyy-MM-dd")));
+            try
+            {
+                addTaiLieu(sh, listdm);
+                myCommand.CommandText = "Insert into Sach(MaTL, NhaXB, TaiBan, ThanhPho)" +
+                                        "values(@MaTL, @NhaXB, @TaiBan, @ThanhPho)";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("MaTL", sh.MaTL));
+                myCommand.Parameters.Add(new SqlParameter("NhaXB", sh.NhaXB));
+                myCommand.Parameters.Add(new SqlParameter("TaiBan", sh.TaiBan));
+                myCommand.Parameters.Add(new SqlParameter("ThanhPho", sh.ThanhPho));
 
-            myCommand.ExecuteNonQuery();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
+
+            return true;
         }
 
-        public void addSach(Sach sh, List<DanhMuc> listdm)
+        public bool addProceeding(Proceedings pr, List<DanhMuc> listdm)
         {
-            addTaiLieu(sh, listdm);
-            myCommand.CommandText = "Insert into Sach(MaTL, NhaXB, TaiBan, ThanhPho)" +
-                                    "values(@MaTL, @NhaXB, @TaiBan, @ThanhPho)";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("MaTL", sh.MaTL));
-            myCommand.Parameters.Add(new SqlParameter("NhaXB", sh.NhaXB));
-            myCommand.Parameters.Add(new SqlParameter("TaiBan", sh.TaiBan));
-            myCommand.Parameters.Add(new SqlParameter("ThanhPho", sh.ThanhPho));
+            try
+            {
+                addTaiLieu(pr, listdm);
+                myCommand.CommandText = "Insert into Proceeding(MaTL, TenHoiNghi, ThanhPho)" +
+                                        "values(@MaTL, @TenHoiNghi, @ThanhPho)";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("MaTL", pr.MaTL));
+                myCommand.Parameters.Add(new SqlParameter("TenHoiNghi", pr.TenHoiNghi));
+                myCommand.Parameters.Add(new SqlParameter("ThanhPho", pr.ThanhPho));
 
-            myCommand.ExecuteNonQuery();
-        }
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
 
-        public void addProceeding(Proceedings pr, List<DanhMuc> listdm)
-        {
-            addTaiLieu(pr, listdm);
-            myCommand.CommandText = "Insert into Proceeding(MaTL, TenHoiNghi, ThanhPho)" +
-                                    "values(@MaTL, @TenHoiNghi, @ThanhPho)";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("MaTL", pr.MaTL));
-            myCommand.Parameters.Add(new SqlParameter("TenHoiNghi", pr.TenHoiNghi));
-            myCommand.Parameters.Add(new SqlParameter("ThanhPho", pr.ThanhPho));
-
-            myCommand.ExecuteNonQuery();
+            return true;
         }
 
         #endregion
 
         #region cac ham update
-        public void updateTaiLieu(TaiLieu tl)
+        public bool updateTaiLieu(TaiLieu tl, List<DanhMuc> listdm)
         {
-            myCommand.CommandText = "Update TaiLieu set LoaiTaiLieu=@LoaiTaiLieu, TacGia=@TacGia, TieuDe=@TieuDe, Nam=@Nam, TomTat=@TomTat, [File]=@File, URL=@URL, DOI=@DOI where MaTL=@MaTL";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("LoaiTaiLieu", tl.LoaiTaiLieu));
-            myCommand.Parameters.Add(new SqlParameter("TacGia", tl.TacGia));
-            myCommand.Parameters.Add(new SqlParameter("TieuDe", tl.TieuDe));
-            myCommand.Parameters.Add(new SqlParameter("Nam", tl.Nam));
-            myCommand.Parameters.Add(new SqlParameter("TomTat", tl.TomTat));
-            myCommand.Parameters.Add(new SqlParameter("File", tl.File));
-            myCommand.Parameters.Add(new SqlParameter("URL", tl.URL));
-            myCommand.Parameters.Add(new SqlParameter("DOI", tl.DOI));
-            myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
+            try
+            {
+                myCommand.CommandText = "Update TaiLieu set LoaiTaiLieu=@LoaiTaiLieu, TacGia=@TacGia, TieuDe=@TieuDe, Nam=@Nam, TomTat=@TomTat, [File]=@File, URL=@URL, DOI=@DOI where MaTL=@MaTL";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("LoaiTaiLieu", tl.LoaiTaiLieu));
+                myCommand.Parameters.Add(new SqlParameter("TacGia", tl.TacGia));
+                myCommand.Parameters.Add(new SqlParameter("TieuDe", tl.TieuDe));
+                myCommand.Parameters.Add(new SqlParameter("Nam", tl.Nam));
+                myCommand.Parameters.Add(new SqlParameter("TomTat", tl.TomTat));
+                myCommand.Parameters.Add(new SqlParameter("File", tl.File));
+                myCommand.Parameters.Add(new SqlParameter("URL", tl.URL));
+                myCommand.Parameters.Add(new SqlParameter("DOI", tl.DOI));
+                myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
 
-            myCommand.ExecuteNonQuery();
+                myCommand.ExecuteNonQuery();
+
+                myCommand.CommandText = "delete from DMTL where MaTL=@MaTL";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
+
+                foreach (DanhMuc dm in listdm)
+                {
+                    myCommand.CommandText = "Insert into DMTL(MaDM, MaTL) values (@MaDM, @MaTL);";
+                    myCommand.Parameters.Clear();
+                    myCommand.Parameters.Add(new SqlParameter("MaDM", dm.MaDM));
+                    myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
+                    myCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
+
+            return true;
         }
 
-        public void UpdateBaiBao(BaiBao bb)
+        public bool UpdateBaiBao(BaiBao bb, List<DanhMuc> listdm)
         {
-            updateTaiLieu(bb);
-            myCommand.CommandText = "Update BaiBao set TapChi=@TapChi, Trang=@Trang, Volume=@Volume, Issue=@Issue where MaTL=@MaTL";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("TapChi", bb.TapChi));
-            myCommand.Parameters.Add(new SqlParameter("Trang", bb.Trang));
-            myCommand.Parameters.Add(new SqlParameter("Volume", bb.Volume));
-            myCommand.Parameters.Add(new SqlParameter("Issue", bb.Issue));
-            myCommand.Parameters.Add(new SqlParameter("MaTL", bb.MaTL));
+            try
+            {
+                updateTaiLieu(bb, listdm);
+                myCommand.CommandText = "Update BaiBao set TapChi=@TapChi, Trang=@Trang, Volume=@Volume, Issue=@Issue where MaTL=@MaTL";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("TapChi", bb.TapChi));
+                myCommand.Parameters.Add(new SqlParameter("Trang", bb.Trang));
+                myCommand.Parameters.Add(new SqlParameter("Volume", bb.Volume));
+                myCommand.Parameters.Add(new SqlParameter("Issue", bb.Issue));
+                myCommand.Parameters.Add(new SqlParameter("MaTL", bb.MaTL));
 
-            myCommand.ExecuteNonQuery();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
+
+            return true;
         }
 
-        public void UpdateSach(Sach sh)
+        public bool UpdateSach(Sach sh, List<DanhMuc> listdm)
         {
-            updateTaiLieu(sh);
-            myCommand.CommandText = "Update Sach set NhaXB=@NhaXB, TaiBan=@TaiBan, ThanhPho=@ThanhPho where MaTL=@MaTL";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("NhaXB", sh.NhaXB));
-            myCommand.Parameters.Add(new SqlParameter("TaiBan", sh.TaiBan));
-            myCommand.Parameters.Add(new SqlParameter("ThanhPho", sh.ThanhPho));
-            myCommand.Parameters.Add(new SqlParameter("MaTL", sh.MaTL));
+            try
+            {
+                updateTaiLieu(sh, listdm);
+                myCommand.CommandText = "Update Sach set NhaXB=@NhaXB, TaiBan=@TaiBan, ThanhPho=@ThanhPho where MaTL=@MaTL";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("NhaXB", sh.NhaXB));
+                myCommand.Parameters.Add(new SqlParameter("TaiBan", sh.TaiBan));
+                myCommand.Parameters.Add(new SqlParameter("ThanhPho", sh.ThanhPho));
+                myCommand.Parameters.Add(new SqlParameter("MaTL", sh.MaTL));
 
-            myCommand.ExecuteNonQuery();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
+
+            return true;
         }
 
-        public void UpdateTrangWeb(TrangWeb web)
+        public bool UpdateTrangWeb(TrangWeb web, List<DanhMuc> listdm)
         {
-            updateTaiLieu(web);
-            myCommand.CommandText = "Update TrangWeb set ToChuc=@ToChuc, Ngay=@Ngay, Thang=@Thang, NgayTruyCap=@NgayTruyCap where MaTL=@MaTL";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("MaTL", web.MaTL));
-            myCommand.Parameters.Add(new SqlParameter("ToChuc", web.ToChuc));
-            myCommand.Parameters.Add(new SqlParameter("Ngay", web.Ngay));
-            myCommand.Parameters.Add(new SqlParameter("Thang", web.Thang));
-            myCommand.Parameters.Add(new SqlParameter("NgayTruyCap", web.NgayTruyCap.ToString("yyyy-MM-dd")));
+            try
+            {
+                updateTaiLieu(web, listdm);
+                myCommand.CommandText = "Update TrangWeb set ToChuc=@ToChuc, Ngay=@Ngay, Thang=@Thang, NgayTruyCap=@NgayTruyCap where MaTL=@MaTL";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("MaTL", web.MaTL));
+                myCommand.Parameters.Add(new SqlParameter("ToChuc", web.ToChuc));
+                myCommand.Parameters.Add(new SqlParameter("Ngay", web.Ngay));
+                myCommand.Parameters.Add(new SqlParameter("Thang", web.Thang));
+                myCommand.Parameters.Add(new SqlParameter("NgayTruyCap", web.NgayTruyCap.ToString("yyyy-MM-dd")));
 
-            myCommand.ExecuteNonQuery();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
+
+            return true;
         }
 
-        public void UpdateProceeding(Proceedings pr)
+        public bool UpdateProceeding(Proceedings pr, List<DanhMuc> listdm)
         {
-            updateTaiLieu(pr);
-            myCommand.CommandText = "Update Proceeding set TenHoiNghi=@TenHoiNghi, ThanhPho=@ThanhPho where MaTL=@MaTL";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("MaTL", pr.MaTL));
-            myCommand.Parameters.Add(new SqlParameter("TenHoiNghi", pr.TenHoiNghi));
-            myCommand.Parameters.Add(new SqlParameter("ThanhPho", pr.ThanhPho));
+            try
+            {
+                updateTaiLieu(pr, listdm);
+                myCommand.CommandText = "Update Proceeding set TenHoiNghi=@TenHoiNghi, ThanhPho=@ThanhPho where MaTL=@MaTL";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("MaTL", pr.MaTL));
+                myCommand.Parameters.Add(new SqlParameter("TenHoiNghi", pr.TenHoiNghi));
+                myCommand.Parameters.Add(new SqlParameter("ThanhPho", pr.ThanhPho));
 
-            myCommand.ExecuteNonQuery();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
+
+            return true;
         }
 
-        public void UdateDanhMuc(DanhMuc dm)
+        public bool UdateDanhMuc(DanhMuc dm)
         {
-            myCommand.CommandText = "Update DanhMuc set TenDanhMuc=@TenDanhMuc where MaDM=@MaDM";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("TenDanhMuc", dm.TenDanhMuc));
-            myCommand.Parameters.Add(new SqlParameter("MaDM", dm.MaDM));
+            try
+            {
+                myCommand.CommandText = "Update DanhMuc set TenDanhMuc=@TenDanhMuc where MaDM=@MaDM";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("TenDanhMuc", dm.TenDanhMuc));
+                myCommand.Parameters.Add(new SqlParameter("MaDM", dm.MaDM));
 
-            myCommand.ExecuteNonQuery();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
+
+            return true;
         }
 
-        public void UpdateGhichu(TaiLieu tl)
+        public bool UpdateGhichu(TaiLieu tl)
         {
-            myCommand.CommandText = "Update TaiLieu set GhiChu=@GhiChu where MaTL=@MaTL";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("GhiChu", tl.GhiChu));
-            myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
+            try
+            {
+                myCommand.CommandText = "Update TaiLieu set GhiChu=@GhiChu where MaTL=@MaTL";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("GhiChu", tl.GhiChu));
+                myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
 
-            myCommand.ExecuteNonQuery();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
+
+            return true;
         }
         #endregion
 
-        public void deleteTaiLieu(TaiLieu tl)
+        public bool deleteTaiLieu(TaiLieu tl)
         {
-            myCommand.CommandText = "Delete from DMTL where MaTL=@MaTL;"
-                                    + "Delete from BaiBao where MaTL=@MaTL;"
-                                    + "Delete from Sach where MaTL=@MaTL;"
-                                    + "Delete from TrangWeb where MaTL=@MaTL;"
-                                    + "Delete from Proceeding where MaTL=@MaTL;"
-                                    + "Delete from TaiLieu where MaTL=@MaTL;";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
+            try
+            {
+                myCommand.CommandText = "Delete from DMTL where MaTL=@MaTL;"
+                                            + "Delete from BaiBao where MaTL=@MaTL;"
+                                            + "Delete from Sach where MaTL=@MaTL;"
+                                            + "Delete from TrangWeb where MaTL=@MaTL;"
+                                            + "Delete from Proceeding where MaTL=@MaTL;"
+                                            + "Delete from TaiLieu where MaTL=@MaTL;";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("MaTL", tl.MaTL));
 
-            myCommand.ExecuteNonQuery();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
+
+            return true;
         }
 
-        public void deleteDanhMuc(DanhMuc dm)
+        public bool deleteDanhMuc(DanhMuc dm)
         {
-            myCommand.CommandText = "Delete from DanhMuc where MaDm=@MaDM";
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.Add(new SqlParameter("MaDM", dm.MaDM));
+            try
+            {
+                myCommand.CommandText = "Delete from DanhMuc where MaDm=@MaDM";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("MaDM", dm.MaDM));
 
-            myCommand.ExecuteNonQuery();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                this.error = e.Message;
+                return false;
+            }
+
+            return true;
         }
         
     }
