@@ -32,7 +32,7 @@ namespace QuanLyTaiLieu
                 list_Docs.Columns.Add("Tiêu đề", 300);
                 list_Docs.Columns.Add("Năm", 50);
 
-                listDM = dbcon.getAllDanhMuc();
+                listDM = dbcon.getCayDanhMuc();
                 listTL = dbcon.getAllTaiLieu();
 
                 UpdateCatalogueTree();
@@ -145,7 +145,7 @@ namespace QuanLyTaiLieu
 
         private void btn_Edit_Click(object sender, EventArgs e)
         {
-            frmCapNhat frm = new frmCapNhat();
+            frmCapNhat frm = new frmCapNhat((TaiLieu)list_Docs.SelectedItems[0].Tag);
             frm.ShowDialog();
         }
 

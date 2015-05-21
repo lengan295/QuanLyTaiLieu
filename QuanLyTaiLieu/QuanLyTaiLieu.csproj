@@ -45,14 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaiBao.cs" />
-    <Compile Include="DanhMuc.cs" />
-    <Compile Include="DBController.cs" />
     <Compile Include="frmCapNhat.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCapNhat.Designer.cs">
       <DependentUpon>frmCapNhat.cs</DependentUpon>
     </Compile>
+    <Compile Include="DanhMuc.cs" />
+    <Compile Include="DBController.cs" />
     <Compile Include="frmManHinhChinh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,12 +77,6 @@
     <Compile Include="frmTrichDanNhieu.Designer.cs">
       <DependentUpon>frmTrichDanNhieu.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmXemTaiLieu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmXemTaiLieu.Designer.cs">
-      <DependentUpon>frmXemTaiLieu.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmXemThongTinTaiLieu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +89,7 @@
     <Compile Include="frmXoaDanhMuc.Designer.cs">
       <DependentUpon>frmXoaDanhMuc.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListBoxItem.cs" />
     <Compile Include="Proceedings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,6 +101,9 @@
     <Compile Include="Sach.cs" />
     <Compile Include="TaiLieu.cs" />
     <Compile Include="TrangWeb.cs" />
+    <EmbeddedResource Include="frmCapNhat.resx">
+      <DependentUpon>frmCapNhat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmManHinhChinh.resx">
       <DependentUpon>frmManHinhChinh.cs</DependentUpon>
     </EmbeddedResource>

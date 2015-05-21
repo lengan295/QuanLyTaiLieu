@@ -20,37 +20,10 @@ namespace QuanLyTaiLieu
             this.URL = tl.URL;
             this.DOI = tl.DOI;
         }
-        public string NhaXB
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public string NhaXB;
 
-        public string ThanhPho
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public string ThanhPho;
 
-        public string TaiBan
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public string TaiBan;
     }
 }

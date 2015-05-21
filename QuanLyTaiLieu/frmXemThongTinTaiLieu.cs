@@ -29,7 +29,7 @@ namespace QuanLyTaiLieu
             txt_Xemthongtin.Enabled = true;
             String loaitailieu = tl.LoaiTaiLieu;
             String thongtin = "Tác giả: " + tl.TacGia + "\nTiêu đề: " + tl.TieuDe + "\nNăm: " + tl.Nam;
-            switch (loaitailieu)
+            switch (loaitailieu.Trim())
             {
                 case "article":
                     {
@@ -52,7 +52,7 @@ namespace QuanLyTaiLieu
                 case "misc":
                     {
                         TrangWeb bb = dbcon.getTrangWeb(tl);
-                        thongtin = thongtin + "\nLoại tài liệu: Web \nTổ chức: " + bb.ToChuc + "\nNgày: " + bb.Ngay + "\\" + bb.Thang + "\nNgày truy cập: " + bb.NgayTruyCap;
+                        thongtin = thongtin + "\nLoại tài liệu: Web \nTổ chức: " + bb.ToChuc + "\nNgày: " + bb.Ngay + "\nTháng: " + bb.Thang + "\nNgày truy cập: " + bb.NgayTruyCap.ToString("dd/MM/yyyy");
                     }
                     break;
             }
@@ -110,7 +110,7 @@ namespace QuanLyTaiLieu
             result = MessageBox.Show(message, caption, buttons);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                DialogResult result2 = MessageBox.Show("Đã xóa!", "Thông báo xác nhận", MessageBoxButtons.OK);
+                MessageBox.Show("Đã xóa!", "Thông báo xác nhận", MessageBoxButtons.OK);
             }
         }
 
