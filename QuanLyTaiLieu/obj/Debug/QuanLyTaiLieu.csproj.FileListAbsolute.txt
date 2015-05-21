@@ -54,3 +54,4 @@ C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiL
 C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.exe
 C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.pdb
 >>>>>>> origin/master
+C:\Users\peter\Documents\GitHub\QuanLyTaiLieu\QuanLyTaiLieu\obj\Debug\QuanLyTaiLieu.frmCapNhat.resources
