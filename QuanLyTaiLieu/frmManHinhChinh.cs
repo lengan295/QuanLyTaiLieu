@@ -33,18 +33,24 @@ namespace QuanLyTaiLieu
                 list_Docs.Columns.Add("Năm", 50);
 
                 listDM = dbcon.getCayDanhMuc();
-                listTL = dbcon.getAllTaiLieu();
+                //listTL = dbcon.getAllTaiLieu();
 
                 UpdateCatalogueTree();
+                tree_catalogue.SelectedNode = tree_catalogue.Nodes[0];
                 UpdateListTaiLieu();
 
-                tree_catalogue.NodeMouseClick += tree_catalogue_NodeMouseClick;
+                tree_catalogue.AfterSelect += tree_catalogue_AfterSelect;
                 list_Docs.MouseDoubleClick += list_Docs_MouseDoubleClick;
                 list_Docs.SelectedIndexChanged += list_Docs_SelectedIndexChanged;
             }
 
             tree_catalogue.ExpandAll();
             list_Docs.FullRowSelect = true;       
+        }
+
+        void tree_catalogue_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            UpdateListTaiLieu();
         }
 
         void list_Docs_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,14 +65,6 @@ namespace QuanLyTaiLieu
             {
                 UpdateButtons(false);
             }
-        }
-
-
-        private void tree_catalogue_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            DanhMuc dm = (DanhMuc) e.Node.Tag;
-            listTL = dbcon.getTaiLieuByDanhMuc(dm);
-            UpdateListTaiLieu();
         }
 
         void list_Docs_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -111,6 +109,7 @@ namespace QuanLyTaiLieu
         {
             frmThemTaiLieu frm = new frmThemTaiLieu();
             frm.ShowDialog();
+            UpdateListTaiLieu();
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
@@ -122,7 +121,7 @@ namespace QuanLyTaiLieu
                 {
                     TaiLieu tl = (TaiLieu)item.Tag;
                     dbcon.deleteTaiLieu(tl);
-                    listTL.Remove(tl);
+                    //listTL.Remove(tl);
                     UpdateListTaiLieu();
                 }
             }
@@ -132,6 +131,7 @@ namespace QuanLyTaiLieu
         {
             frmCapNhat frm = new frmCapNhat((TaiLieu)list_Docs.SelectedItems[0].Tag);
             frm.ShowDialog();
+            UpdateListTaiLieu();
         }
 
         private void btn_citation_Click(object sender, EventArgs e)
@@ -150,6 +150,8 @@ namespace QuanLyTaiLieu
             string[] arr = new string[4];
             ListViewItem itm;
             list_Docs.Items.Clear();
+            DanhMuc cur = (DanhMuc)tree_catalogue.SelectedNode.Tag;
+            listTL = dbcon.getTaiLieuByDanhMuc(cur);
             //add items to ListView
             foreach (TaiLieu tl in listTL)
             {
@@ -165,16 +167,22 @@ namespace QuanLyTaiLieu
 
         private void UpdateCatalogueTree()
         {
+            int SL = dbcon.getSoLuong(null);
+            TreeNode node = new TreeNode("Tất cả (" + SL + ")");
+            node.Tag = null;
+            tree_catalogue.Nodes.Add(node);
             foreach (DanhMuc dm in listDM)
             {
-                TreeNode node = new TreeNode(dm.TenDanhMuc);
+                SL = dbcon.getSoLuong(dm);
+                node = new TreeNode(dm.TenDanhMuc + " (" + SL + ")");
                 node.Tag = dm;
                 tree_catalogue.Nodes.Add(node);
                 if (dm.DSDanhMucCon.Count>0)
                 {
                     foreach (DanhMuc dmcon in dm.DSDanhMucCon)
                     {
-                        TreeNode childnode = new TreeNode(dmcon.TenDanhMuc);
+                        SL = dbcon.getSoLuong(dmcon);
+                        TreeNode childnode = new TreeNode(dmcon.TenDanhMuc + " (" + SL + ")");
                         childnode.Tag = dmcon;
                         node.Nodes.Add(childnode);
                     }

@@ -102,6 +102,28 @@ namespace QuanLyTaiLieu
             return list;
         }
 
+        public int getSoLuong(DanhMuc dm)
+        {
+            int result;
+            if (dm == null)
+                myCommand.CommandText = "SELECT COUNT(*) FROM TaiLieu";
+            else
+            {
+                myCommand.CommandText = "SELECT COUNT(*) FROM DMTL WHERE MaDM=@MaDM";
+                myCommand.Parameters.Clear();
+                myCommand.Parameters.Add(new SqlParameter("MaDM", dm.MaDM));
+            }
+            try
+            {
+                result = (int)myCommand.ExecuteScalar();
+            }
+            catch (Exception)
+            {
+                result = -1;
+            }
+            return result;
+        }
+
         public List<TaiLieu> getAllTaiLieu()
         {
             List<TaiLieu> list = new List<TaiLieu>();
@@ -138,6 +160,8 @@ namespace QuanLyTaiLieu
 
         public List<TaiLieu> getTaiLieuByDanhMuc(DanhMuc dm)
         {
+            if (dm == null)
+                return getAllTaiLieu();
             List<TaiLieu> list = new List<TaiLieu>();
             myCommand.CommandText = "Select * from TaiLieu where MaTL in (SELECT MaTL FROM DMTL WHERE MaDM=@MaDM)";
             myCommand.Parameters.Clear();

@@ -114,7 +114,7 @@ namespace QuanLyTaiLieu
             else if (checklistbox.CheckedItems.Count == 0) MessageBox.Show("Chưa chọn các Danh mục chứa tài liệu.");
             else
             {
-                TaiLieu tl = new TaiLieu();
+                //TaiLieu tl = new TaiLieu();
                 tl.TacGia = txtTacgia.Text;
                 tl.TieuDe = txtTieude.Text;
                 tl.Nam = int.Parse(txtNam.Text);

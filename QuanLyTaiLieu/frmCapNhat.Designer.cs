@@ -90,6 +90,7 @@
             this.btbCancel.TabIndex = 14;
             this.btbCancel.Text = "Cancel";
             this.btbCancel.UseVisualStyleBackColor = true;
+            this.btbCancel.Click += new System.EventHandler(this.btbCancel_Click);
             // 
             // btbOk
             // 
@@ -99,6 +100,7 @@
             this.btbOk.TabIndex = 13;
             this.btbOk.Text = "Ok";
             this.btbOk.UseVisualStyleBackColor = true;
+            this.btbOk.Click += new System.EventHandler(this.btbOk_Click);
             // 
             // groupBox1
             // 
@@ -362,6 +364,7 @@
             this.radiobtn2.TabStop = true;
             this.radiobtn2.Text = "URL";
             this.radiobtn2.UseVisualStyleBackColor = true;
+            this.radiobtn2.CheckedChanged += new System.EventHandler(this.radiobtn1_CheckedChanged);
             // 
             // txtTep
             // 
@@ -380,6 +383,7 @@
             this.btnBrowser.TabIndex = 18;
             this.btnBrowser.Text = "Browser";
             this.btnBrowser.UseVisualStyleBackColor = true;
+            this.btnBrowser.Click += new System.EventHandler(this.btnBrowser_Click);
             // 
             // radiobtn1
             // 
@@ -391,6 +395,7 @@
             this.radiobtn1.TabStop = true;
             this.radiobtn1.Text = "Tệp";
             this.radiobtn1.UseVisualStyleBackColor = true;
+            this.radiobtn1.CheckedChanged += new System.EventHandler(this.radiobtn1_CheckedChanged);
             // 
             // txtTomtat
             // 
@@ -519,6 +524,7 @@
             this.cbbLoaiTL.Name = "cbbLoaiTL";
             this.cbbLoaiTL.Size = new System.Drawing.Size(121, 21);
             this.cbbLoaiTL.TabIndex = 11;
+            this.cbbLoaiTL.SelectedIndexChanged += new System.EventHandler(this.cbbLoaiTL_SelectedIndexChanged);
             // 
             // label1
             // 
